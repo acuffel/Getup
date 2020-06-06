@@ -1,0 +1,10 @@
+*.pyc
+__pycache__
+app.db
+.cache/
+venv
+geckodriver.log
+.idea/
+.coverage
+htmlcov/
+getup_project/settings/production.py
