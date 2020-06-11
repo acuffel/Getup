@@ -11,6 +11,15 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+@font-face {
+  font-family: PoppinsBold;
+  src: url("../fonts/poppins/Poppins-Bold.otf");
+}
+@font-face {
+  font-family: PoppinsLight;
+  src: url("../fonts/poppins/Poppins-Light.otf");
+}
+
 #mainNav {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   background-color: #fff;
@@ -21,7 +30,7 @@
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/photo_accueil.jpeg");
+  background: url("../img/homepage.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -29,6 +38,7 @@ header.masthead {
 }
 header.masthead h1 {
   font-size: 2.25rem;
+   color: rgba(165,42,42, 0.8);
 }
 @media (min-width: 992px) {
   header.masthead {
@@ -48,4 +58,20 @@ header.masthead h1 {
   header.masthead h1 {
     font-size: 3.5rem;
   }
+}
+
+.homepage-section h3{
+    font-family: "PoppinsBold", sans-serif;
+}
+
+#about-us {
+    font-family: "PoppinsLight", sans-serif;
+}
+
+#sticky-footer {
+    font-size: small;
+}
+
+#know-more-about-us {
+    font-size: small;
 }

@@ -23,40 +23,59 @@
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light color-black fixed-top py-3" id="mainNav">
+            <div class="container-fluid">
             <a class="navbar-brand" href="#">Get Up 4 Animals</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                  </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+            <ul class="nav navbar-nav navbar-right mr-4" id="list-nav" >
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  About Us
+                </a>
+                <div class="dropdown-menu" aria-labelledby="aboutus">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="associations" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Associations
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Events&Collects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Make a donation</a>
+              </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">My Account</a>
+              </li>
+                <li>
+                    <button type="submit" class="btn btn-search" id="get-top-bar">
+                        <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+                    </button>
+                </li>
+            </ul>
+                <div class="nav navbar-nav navbar-right" id="search-top-bar" style="display: none;">
+                    <form class="form-inline">
+                      <input type="text" class="form-control" placeholder="Que recherchez vous?" aria-label="Search" size="100">
+                        <button type="submit" class="btn btn-window-close">
+                                    <span class="fa fa-window-close fa-2x"></span>
+                           </button>
+                  </form>
             </div>
-
+        </div>
         </nav>
 
         {% block content %}{% endblock %}
@@ -64,6 +83,40 @@
 
         <!-- Footer-->
         <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p>Get Up 4 Animals</p>
+                        <p class="font-weight-bold">Ecrivez-nous</p>
+                        <a href="mailto:getup@mail.com">getup@mail.com</a>
+                    </div>
+                    <div class="col">
+                        <p class="font-weight-bold">Découvrez Get Up 4 Animals</p>
+                        <p>Qui sommes-nous ?</p>
+                        <p>Le manifeste</p>
+                        <p>Nos engagements</p>
+                    </div>
+                    <div class="col">
+                        <p class="font-weight-bold">Agir</p>
+                        <p>Inscrire mon association</p>
+                        <p>Faire un don</p>
+                        <p>Collectes spéciales et events</p>
+                    </div>
+                    <div class="col">
+                        <p class="font-weight-bold">Aide</p>
+                        <p>FAQ</p>
+                        <p>Centre d'aide</p>
+                    </div>
+                    <div class="col">
+                        <p class="font-weight-bold">Infos légales</p>
+                        <p>CGU Utilisateur</p>
+                        <p>CGU Association</p>
+                        <p>Mentions légales</p>
+                        <p>Confidentialité</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="container text-center">
                 <small>Copyright &copy; Your Website</small>
             </div>

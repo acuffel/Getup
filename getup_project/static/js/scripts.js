@@ -60,4 +60,17 @@
     }
   });
 
+    // Show search toolbar when click on toolbar icon
+    $('#get-top-bar').click(function() {
+    $('#list-nav').hide();
+    $('#search-top-bar').show();
+  });
+
+    $('.btn-window-close').click(function() {
+    $('#list-nav').show();
+    $('#search-top-bar').hide();
+  });
+
 })(jQuery); // End of use strict
+
+
