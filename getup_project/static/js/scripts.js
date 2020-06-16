@@ -71,6 +71,7 @@
     $('#search-top-bar').hide();
   });
 
+
 })(jQuery); // End of use strict
 
 

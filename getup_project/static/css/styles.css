@@ -38,7 +38,8 @@ header.masthead {
 }
 header.masthead h1 {
   font-size: 2.25rem;
-   color: rgba(165,42,42, 0.8);
+  color: rgba(165,42,42, 0.8);
+  font-family: "PoppinsBold", sans-serif;
 }
 @media (min-width: 992px) {
   header.masthead {
@@ -59,6 +60,12 @@ header.masthead h1 {
     font-size: 3.5rem;
   }
 }
+@media (min-width: 1200px) {
+  header.masthead h1 {
+    font-size: 3.5rem;
+  }
+}
+
 
 .homepage-section h3{
     font-family: "PoppinsBold", sans-serif;
@@ -74,4 +81,8 @@ header.masthead h1 {
 
 #know-more-about-us {
     font-size: small;
+}
+
+#list-nav a:hover {
+  border-bottom: 3px solid red;
 }

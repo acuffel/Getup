@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<header class="masthead">
+    <div class="container h-80">
+        <div class="row text-align" style="padding-top: 150px;">
+            <div class="offset-8">
+                <h2 class="text-uppercase">GET UP FOR ANIMALS</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-8 d-flex justify-content-end">
+                <p>Nous sommes une équipe engagée à promouvoir et soutenir les associations de protection animale et de leur environnement dans leurs missions</p>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 50px;">
+            <div class="offset-8">
+                <button type="button" class="btn btn-outline-dark" id="home-donation">
+                    Watch the vidéo
+                </button>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+
+<div class="container">
+    <div class="row pt-2">
+        <div class="offset-2 col-2">
+            <a href="#vision" class="badge badge-light">
+                WHO WE ARE
+            </a>
+        </div>
+        <div class="offset-1 col-2">
+            <a href="#mission" class="badge badge-light">
+                WHAT WE DO
+            </a>
+        </div>
+        <div class="offset-1 col-2">
+            <a href="#commitment" class="badge badge-light">
+                HOW DOES IT WORK
+            </a>
+        </div>
+    </div>
+</div>
+<hr class="fixed-subnav-list-hr">
+
+</div>
+
+<section class="about-section" id="vision">
+    <div class="container h-40 pt-3">
+        <div class="row">
+            <div class="offset-1 col-3">
+                <img src="{% static 'img/renard.jpg' %}" alt="Bootstrap" class="img-thumbnail">
+                </div>
+            <div class="col-4 ">
+                <h4 class="mb-2 align-items-center text-center"> OUR VISION </h4>
+                <p class="d-flex justify-content"> Nous croyons en un monde meilleur dans lequel les individus s’engagent et s’unissent pour soutenir le travail des associations de protection animale afin de faire respecter les droits des animaux </p>
+            </div>
+            <div class="col-3">
+                <img src="{% static 'img/chimp.jpg' %}" alt="Bootstrap" class="img-thumbnail">
+                </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-section" id="mission">
+    <div class="container h-40 pt-3 mt-5">
+        <div class="row">
+            <div class="offset-1 col-4">
+                <img src="{% static 'img/panda.jpg' %}" alt="Bootstrap" class="img-thumbnail">
+            </div>
+            <div class="offset-1 col-5 ">
+                <h4 class="mb-2 align-items-center text-center"> OUR MISSION </h4>
+
+                <h5 class="d-flex justify-content-start"> Nous valorisons </h5>
+                <p class="d-flex justify-content"> Nous travaillons sans relâche pour promouvoir les projets des associations de protection animale et de leur environnement et donner une visibilité internationale à l’immense travail qu’elles réalisent sur le terrain </p>
+                <h5 class="d-flex justify-content-start"> Nous impulsons/facilitons </h5>
+                <p class="d-flex justify-content"> Nous nous efforçons de contribuer à faire émerger une communauté internationale dynamique de donateurs Get up et créer du lien entre les associations et le public pour faciliter l’engagement et favoriser l’action en faveurdes animaux </p>
+                <h5 class="d-flex justify-content-start"> Nous soutenons </h5>
+                <p class="d-flex justify-content"> Nous sommes profondément déterminés à aider le plus grand nombre d’associations de protection animale dansle monde à accomplir leur mission et récolter des fonds dans les meilleures conditions possibles </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-commitment" id="commitment">
+    <div class="container h-40 pt-3 mt-5">
+        <div class="row align-items-center justify-content-center text-center">
+            <h4 class="mb-5 "> OUR COMMITMENT </h4>
+        </div>
+    </div>
+</section>
+
+<section class="about-values" id="values">
+    <div class="container h-40 pt-3">
+        <div class="row align-items-center justify-content-center text-center">
+            <h4 class="mb-5 "> OUR VALUES </h4>
+        </div>
+    </div>
+</section>
+
+<section class="about-team" id="team">
+    <div class="container h-40 pt-3">
+        <div class="row align-items-center justify-content-center text-center">
+            <h4 class="mb-5 "> OUR TEAM </h4>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
