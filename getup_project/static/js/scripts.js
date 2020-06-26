@@ -72,6 +72,12 @@
   });
 
 
+    $('#id_email').one('click', function(){
+        $(this).val('');
+    });
+
+
+
 })(jQuery); // End of use strict
 
 
