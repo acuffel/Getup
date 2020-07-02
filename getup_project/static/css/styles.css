@@ -109,3 +109,19 @@ header.masthead h1 {
     align-items: left;
     }
 
+.registration-back {
+
+  background: url("../img/registration.jpg");
+  }
+
+
+header.masthead-about {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: url("../img/about.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  color: white;
+}
