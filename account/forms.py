@@ -16,14 +16,16 @@ class ParagraphErrorList(ErrorList):
     def as_divs(self):
         if not self:
             return ''
-        return '<div class="errorlist">%s</div>' % ''.join(
+        return '<div style="color: white;" class="errorlist">%s</div>' % ''.join(
             ['<p class="small error">%s</p>' % e for e in self])
 
 
 # Create LoginForm
 class LoginForm(ModelForm):
-    email = forms.CharField(initial='Email', label='')
-    password = forms.CharField(initial='Password', label='')
+    email = forms.CharField(widget=forms.TextInput(
+        attrs={'size': 20, 'placeholder': 'Email'}), label='')
+    password = forms.CharField(widget=forms.TextInput(
+        attrs={'size': 20, 'placeholder': 'Mot de passe'}), label='')
 
     class Meta:
         model = CustomUser
@@ -53,12 +55,18 @@ class MemberForm(ModelForm):
     # Check if email is not used
     def clean_email(self):
         email = self.cleaned_data.get('email')
+        re_email = self.cleaned_data.get('re_email')
+        if email != re_email:
+            raise ValidationError("Les emails ne correspondent pas")
         if User.objects.filter(email=email).exists():
             raise ValidationError("Cette email est déjà utilisé")
         return email
 
     def clean_password(self):
         password = self.cleaned_data.get('password')
+        re_password = self.cleaned_data.get('re_password')
+        if password != re_password:
+            raise ValidationError("Les mots de passe ne correspondent pas")
         special_characters = ['@', '-', '/', '%', '$', '*', '&', '#']
         if len(password) < 8:
             raise ValidationError("Le mot de passe doit comporter"
@@ -81,37 +89,59 @@ class MemberForm(ModelForm):
 
 # Create AssociationForm
 class AssociationForm(ModelForm):
-    name = forms.CharField(label='name')
-    address = forms.CharField(label='')
-    post_code = forms.DateField(label='', initial='Code Postal')
-    city = forms.DateField(label='', initial='Ville')
-    country = forms.DateField(label='', initial='Pays')
-    first_name = forms.CharField(label='', initial='Prénom')
-    last_name = forms.CharField(label='', initial='Nom')
-    email = forms.CharField(label='', initial='Email')
-    re_email = forms.CharField(label='', initial='Confirmez email')
-    password = forms.CharField(label='', initial='Mot de passe')
-    re_password = forms.CharField(label='', initial='Confirmez mot de passe')
+    name = forms.CharField(widget=forms.TextInput(attrs={'size': 50}))
+    street = forms.CharField(widget=forms.TextInput(attrs={'size': 50}))
+    zip_code = forms.IntegerField(
+        widget=forms.TextInput(
+            attrs={'size': 15, 'placeholder': 'Code Postal'}))
+    city = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'size': 15, 'placeholder': 'Ville'}))
+    country = forms.CharField(
+        widget=forms.TextInput(attrs={'size': 15, 'placeholder': 'Pays'}))
+    first_name = forms.CharField(
+        widget=forms.TextInput(attrs={'size': 25, 'placeholder': 'Prénom'}))
+    last_name = forms.CharField(
+        widget=forms.TextInput(attrs={'size': 25, 'placeholder': 'Nom'}))
+    email = forms.CharField(
+        widget=forms.TextInput(attrs={'size': 25, 'placeholder': 'Email'}))
+    re_email = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'size': 25, 'placeholder': 'Confirmez votre email'}))
+    password = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'size': 25, 'placeholder': 'Mot de passe'}))
+    re_password = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'size': 25, 'placeholder': 'Confirmez votre mot de passe'}))
 
     class Meta:
         model = CustomUser
-        fields = ['name', 'address', 'post_code', 'city',
+        fields = ['name', 'street', 'zip_code', 'city',
                   'country', 'first_name', 'last_name', 'email',
                   're_email', 'password', 're_password']
         widget = {
             'email': EmailInput(attrs={'class': 'form-control'}),
             'password': PasswordInput(attrs={'class': 'form-control'}),
-            'name': Textarea(attrs={'cols': 80, 'rows': 20}),
         }
 
     # Check if email is not used
-    def clean_a_email(self):
+    def clean_email(self):
         email = self.cleaned_data.get('email')
         if User.objects.filter(email=email).exists():
             raise ValidationError("Cette email est déjà utilisé")
         return email
 
-    def clean_a_password(self):
+    def clean_re_email(self):
+        re_email = self.cleaned_data.get('re_email')
+        email = self.clean_email()
+        print(re_email)
+        print(email)
+        if email != re_email:
+            raise ValidationError("Les Emails ne correspondent pas")
+        return re_email
+
+    def clean_password(self):
         password = self.cleaned_data.get('password')
         special_characters = ['@', '-', '/', '%', '$', '*', '&', '#']
         if len(password) < 8:
@@ -131,3 +161,10 @@ class AssociationForm(ModelForm):
             raise ValidationError(
                 "Le mot de passe doit comporter au moins 1 chiffre")
         return password
+
+    def clean_re_password(self):
+        re_password = self.cleaned_data.get('re_password')
+        password = self.clean_password()
+        if password != re_password:
+            raise ValidationError("Les Mots de passe ne correspondent pas")
+        return re_password

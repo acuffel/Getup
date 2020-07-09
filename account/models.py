@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 
 # Create an Address on DB
 class Address(models.Model):
-    street = models.CharField(max_length=200)
-    state = models.CharField(max_length=100)
+    street = models.CharField(max_length=200, null=True)
+    state = models.CharField(max_length=100, null=True)
     zip_code = models.IntegerField()
     city = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
@@ -13,11 +13,11 @@ class Address(models.Model):
 
 # Create an Association on DB
 class Association(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     picture = models.ImageField(null=True)
     description = models.TextField(null=True)
     creation_date = models.DateTimeField(auto_now_add=True)
-    category = models.CharField(max_length=100)
+    category = models.CharField(max_length=100, null=True)
 
 
 # Create a Custom User based on User library Django
@@ -28,14 +28,4 @@ class CustomUser(models.Model):
     birth_date = models.DateField(null=True)
     address_id = models.OneToOneField(Address, on_delete=models.CASCADE)
     association_id = models.OneToOneField(Association, on_delete=models.CASCADE)
-    MEMBER = 'ME'
-    MANAGER = 'MA'
-    TYPE_USER_CHOICES = (
-        (MEMBER, 'Member'),
-        (MANAGER, 'Manager'),
-    )
-    type_user_choices = models.CharField(
-        max_length=2,
-        choices=TYPE_USER_CHOICES,
-    )
-
+    user_type = models.CharField(max_length=2)

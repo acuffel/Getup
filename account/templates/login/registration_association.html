@@ -62,31 +62,31 @@
 
         <form action="{% url 'account:association_registration' %}" method="post">
             {% csrf_token %}
-            <div class="row mt-3">
+            <div class="row mt-2">
                 <div class="offset-1 col-10">
                     <p> Nom de l'association </p>
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-1">
                 <div class="offset-1 col-10">
                     <p>
                     {{ form.name }}
                     </p>
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-2">
                 <div class="offset-1 col-10">
                     <p> Adresse de l'association </p>
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-1">
                 <div class="offset-1 col-10">
-                    {{ form.address }}
+                    {{ form.street }}
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-1">
                 <div class="offset-1 col-2">
-                    {{ form.post_code }}
+                    {{ form.zip_code }}
                 </div>
                 <div class="offset-1 col-2">
                     {{ form.city }}
@@ -95,34 +95,35 @@
                     {{ form.country }}
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-2">
                 <div class="offset-1 col-10">
                     <p> Administrateur de l'association </p>
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-1">
                 <div class="offset-1 col-4">
                     {{ form.first_name }}
                 </div>
-                <div class="offset-2 col-4">
+                <div class="offset-1 col-4">
                     {{ form.last_name }}
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-1">
                 <div class="offset-1 col-4">
                     {{ form.email }}
                 </div>
-                <div class="offset-2 col-4">
+                <div class="offset-1 col-4">
                     {{ form.re_email }}
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-1">
                 <div class="offset-1 col-4">
                     {{ form.password }}
                 </div>
-                <div class="offset-2 col-4">
+                <div class="offset-1 col-4">
                     {{ form.re_password }}
                 </div>
+                {{ form.errors }}
             </div>
 
             <div class="row mt-3 mb-3">
