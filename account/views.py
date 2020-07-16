@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
-from django.forms import ValidationError
 
 
 from .forms import LoginForm, ParagraphErrorList, MemberForm, AssociationForm
@@ -10,23 +9,47 @@ from .models import CustomUser, Association, Address
 
 
 @csrf_exempt
-def login(request):
+def login_view(request):
     """
     :param request: None
     :return: Return login page
     """
+    error = False
     form = LoginForm(request.POST or None, error_class=ParagraphErrorList)
     if form.is_valid():
-        email = form.cleaned_data['email']
+        print(form.cleaned_data)
+        username = form.cleaned_data['username']
         password = form.cleaned_data['password']
-        user = authenticate(request, username=email, password=password)
-        if user is not None:
+        user = authenticate(request, username=username, password=password)
+        print(user)
+        user_chosen = User.objects.filter(username=username)
+        user_type = CustomUser.objects.filter(user=user_chosen)
+        if user is not None and user_type.user_type == 'AS':
             login(request, user)
-            return render(request, 'account/account.html', locals())
+            print("good")
+            return render(request,
+                          'association/welcome_association.html',
+                          locals())
+        elif user is not None and user_type == 'ME':
+            print("pas good")
+            login(request, user)
+            return render(request, 'home/home.html',
+                          locals())
         else:
+            print('pas good good')
+            error = True
             return render(request, 'login/login.html', locals())
     else:
         return render(request, 'login/login.html', locals())
+
+
+def logout_view(request):
+    """
+    :param request: Click the button logout
+    :return: homepage
+    """
+    logout(request)
+    return render(request, 'home/accueil.html', locals())
 
 
 @csrf_exempt
@@ -88,3 +111,7 @@ def association_registration(request):
         return render(request, 'login/login.html', {'form': form})
     else:
         return render(request, 'login/registration_association.html', locals())
+
+
+def welcome_association(request):
+    return render(request, 'association/welcome_association.html', locals())

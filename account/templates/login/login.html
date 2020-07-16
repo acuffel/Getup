@@ -34,6 +34,9 @@
                         {{ form.as_p }}
                         <input type="submit" value="OK" style="width: 68%;"class="btn btn-success btn-sm"/>
                     </form>
+                    {% if error %}
+                        <p><strong style="color: white;">Utilisateur inconnu ou mauvais de mot de passe.</strong></p>
+                    {% endif %}
             </div>
         </div>
         <div class="row text-left mt-4 pt-1">
@@ -50,13 +53,5 @@
 
 </section>
 
-        <!-- Bootstrap core JS-->
-        <script type="text/javascript" src="{% static 'js/jquery/jquery.min.js' %}"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <!-- Third party plugin JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-        <!-- Core theme JS-->
-        <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
     </body>
 </html>

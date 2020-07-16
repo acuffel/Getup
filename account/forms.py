@@ -21,15 +21,11 @@ class ParagraphErrorList(ErrorList):
 
 
 # Create LoginForm
-class LoginForm(ModelForm):
-    email = forms.CharField(widget=forms.TextInput(
+class LoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(
         attrs={'size': 20, 'placeholder': 'Email'}), label='')
     password = forms.CharField(widget=forms.TextInput(
         attrs={'size': 20, 'placeholder': 'Mot de passe'}), label='')
-
-    class Meta:
-        model = CustomUser
-        fields = ['email', 'password']
 
 
 # Create MemberForm
