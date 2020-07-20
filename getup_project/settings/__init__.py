@@ -111,7 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -136,3 +135,11 @@ INTERNAL_IPS = ['127.0.0.1']
 STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
     )
+
+# if the method need to be login to be used
+# You need to decorate the method with @login_required
+LOGIN_URL = '/login/login/'
+
+LOGIN_REDIRECT_URL = '/association/welcome_association/'
+
+LOGOUT_REDIRECT_URL = ''

@@ -11,5 +11,7 @@ urlpatterns = [
          name='association_registration'),
     path('', views.logout_view, name='logout'),
     path('welcome/association', views.welcome_association,
-         name='welcome_association')
+         name='welcome_association'),
+    path('info/association', views.show_information, name='show_information'),
+    path('my_association', views.show_association, name='show__association'),
 ]

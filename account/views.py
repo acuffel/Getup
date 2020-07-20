@@ -17,26 +17,24 @@ def login_view(request):
     error = False
     form = LoginForm(request.POST or None, error_class=ParagraphErrorList)
     if form.is_valid():
-        print(form.cleaned_data)
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
         user = authenticate(request, username=username, password=password)
-        print(user)
-        user_chosen = User.objects.filter(username=username)
-        user_type = CustomUser.objects.filter(user=user_chosen)
-        if user is not None and user_type.user_type == 'AS':
+        user_chosen = User.objects.filter(username=username).values('id')
+        user_id = [v['id'] for v in user_chosen]
+        custom_chosen = CustomUser.objects.filter(
+            user=user_id[0]).values('user_type')
+        user_type = [v['user_type'] for v in custom_chosen]
+        if user is not None and user_type == ['AS']:
             login(request, user)
-            print("good")
             return render(request,
                           'association/welcome_association.html',
                           locals())
-        elif user is not None and user_type == 'ME':
-            print("pas good")
+        elif user is not None and user_type == ['ME']:
             login(request, user)
             return render(request, 'home/home.html',
                           locals())
         else:
-            print('pas good good')
             error = True
             return render(request, 'login/login.html', locals())
     else:
@@ -49,7 +47,7 @@ def logout_view(request):
     :return: homepage
     """
     logout(request)
-    return render(request, 'home/accueil.html', locals())
+    return render(request, 'home/homepage.html', locals())
 
 
 @csrf_exempt
@@ -81,7 +79,6 @@ def member_registration(request):
 def association_registration(request):
     form = AssociationForm(request.POST or None, error_class=ParagraphErrorList)
     if form.is_valid():
-        print(form.cleaned_data)
         name = form.cleaned_data['name']
         street = form.cleaned_data['street']
         zip_code = form.cleaned_data['zip_code']
@@ -93,15 +90,15 @@ def association_registration(request):
         password = form.cleaned_data['password']
         re_email = form.cleaned_data['re_email']
         re_password = form.cleaned_data['re_password']
-        user = User(username=email,  email=email, password=password,
+        user = User.objects.create_user(username=email,  email=email, password=password,
                     last_name=last_name, first_name=first_name)
-        address = Address(street=street, zip_code=zip_code, city=city,
+        address = Address.objects.create(street=street, zip_code=zip_code, city=city,
                           country=country)
-        association = Association(name=name)
+        association = Association.objects.create(name=name)
         # AS Like Association
         user_type = 'AS'
-        custom_user = CustomUser(user=user, address_id=address,
-                                 association_id=association,
+        custom_user = CustomUser.objects.create(user=user, address=address,
+                                 association=association,
                                  user_type=user_type)
         user.save()
         address.save()
@@ -115,3 +112,35 @@ def association_registration(request):
 
 def welcome_association(request):
     return render(request, 'association/welcome_association.html', locals())
+
+
+def show_information(request):
+    """
+    :param:
+    :return:
+    """
+    user_id = request.user.id
+    user_asso = User.objects.filter(pk=user_id)
+    info_asso = CustomUser.objects.filter(user_id=user_id).values()
+    address_id = [v['address_id'] for v in info_asso]
+    address_asso = Address.objects.filter(id=address_id[0])
+    context = {
+        'address_asso': address_asso,
+        'user_asso': user_asso,
+    }
+    return render(request, 'association/info_association.html', context)
+
+
+def show_association(request):
+    """
+    :param:
+    :return:
+    """
+    user_id = request.user.id
+    info_asso = CustomUser.objects.filter(user_id=user_id).values()
+    association_id = [v['association_id'] for v in info_asso]
+    my_association = Association.objects.filter(id=association_id[0])
+    context = {
+        'my_association': my_association,
+    }
+    return render(request, 'association/my_association.html', context)

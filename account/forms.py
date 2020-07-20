@@ -1,4 +1,4 @@
-from django.forms import ModelForm, Textarea, EmailInput, \
+from django.forms import ModelForm, EmailInput, \
     PasswordInput, ValidationError
 from django.contrib.auth.models import User
 from django.forms.utils import ErrorList
@@ -26,6 +26,14 @@ class LoginForm(forms.Form):
         attrs={'size': 20, 'placeholder': 'Email'}), label='')
     password = forms.CharField(widget=forms.TextInput(
         attrs={'size': 20, 'placeholder': 'Mot de passe'}), label='')
+
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+        widget = {
+            'username': EmailInput(attrs={'class': 'form-control'}),
+            'password': PasswordInput(attrs={'class': 'form-control'}),
+        }
 
 
 # Create MemberForm

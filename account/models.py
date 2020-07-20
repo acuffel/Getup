@@ -26,6 +26,6 @@ class CustomUser(models.Model):
     civility = models.CharField(max_length=3, null=True)
     phone = models.CharField(max_length=15, null=True)
     birth_date = models.DateField(null=True)
-    address_id = models.OneToOneField(Address, on_delete=models.CASCADE)
-    association_id = models.OneToOneField(Association, on_delete=models.CASCADE)
+    address = models.OneToOneField(Address, on_delete=models.CASCADE)
+    association = models.OneToOneField(Association, on_delete=models.CASCADE)
     user_type = models.CharField(max_length=2)

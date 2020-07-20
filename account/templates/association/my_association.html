@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<header class="masthead-account-asso">
+    <div class="container h-100">
+        <div class="row mt-5 pt-5">
+            <div class="col-12 text-center">
+            <h2 class="text-uppercase" style="color: black;">
+                <a href="{% url 'account:welcome_association' %}" class="badge badge-light"> MON COMPTE
+                </a>
+            </h2>
+            </div>
+        </div>
+        <hr class="divider my-4 py-4"/>
+    </div>
+</header>
+
+<section class="account-infos">
+    <div class="container h-100">
+        <div class="row mt-1 mb-4">
+            <div class="col-3">
+                <ul class="list-group">
+                  <a href="{% url 'account:show_information' %}" class="list-group-item list-group-item-action">
+                      MES INFOS </a>
+                  <a href="{% url 'account:show__association' %}" class="list-group-item list-group-item-action">
+                      MON ASSOCIATION</a>
+                  <a href="#" class="list-group-item list-group-item-action">
+                      MES DONS</a>
+                  <a href="#" class="list-group-item list-group-item-action">
+                      MES COLLECTES</a>
+                  <a href="#" class="list-group-item list-group-item-action">
+                      BESOIN D'AIDE ?</a>
+                    <a href="{% url 'account:logout' %}" class="list-group-item list-group-item-action">
+                        SE DECONNECTER</a>
+                </ul>
+                </div>
+
+        <div class="col-8 offset-1 ">
+            <h3 class="justify">MON ASSOCIATION</h3>
+            {% for association in my_association %}
+            <div class="row">
+                <div class="col-5">
+                    <ul style="list-style:none; padding:0;">
+                        <li>Add a picture</li>
+                    </ul>
+                </div>
+                <div class="offset-1 col-5">
+                    <ul style="list-style:none; padding:0;">
+                        <li>{{association.name}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                <p> Description de l'asso </p>
+                    </div>
+            </div>
+            <div class="row">
+                 <div class="col-12">
+                <h5 class="justify"> Les catégories </h5>
+                 </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                <input type="submit" value="Modifier les informations" class="btn btn-success btn-sm"/>
+                    </div>
+            </div>
+            {% endfor %}
+        </div>
+            </div>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -3,16 +3,59 @@
 
 {% block content %}
 
-<header class="masthead-about">
-    <div class="container h-20">
-        <div class="row text-align" style="padding-top: 10px;">
-            <div class="offset-8">
-                <h2 class="text-uppercase">WELCOME : </h2>
+<header class="masthead-account-asso">
+    <div class="container h-100">
+        <div class="row mt-5 pt-5">
+            <div class="col-12 text-center">
+            <h2 class="text-uppercase" style="color: black;">
+                <a href="{% url 'account:welcome_association' %}" class="badge badge-light"> MON COMPTE
+                </a>
+            </h2>
             </div>
         </div>
+        <hr class="divider my-4 py-4"/>
     </div>
 </header>
 
+<section class="account-home">
+    <div class="container h-100">
+        <div class="row my-4">
+            <div class="offset-2 col-2 pt-4">
+                <a role="button" href="{% url 'account:show_information' %}" class="btn btn-outline-dark btn-lg btn-block">
+                Mes Informations
+                </a>
+            </div>
+            <div class="offset-1 col-2 pt-4">
+                <a role="button" href="{% url 'account:show__association' %}" class="btn btn-outline-dark btn-lg btn-block">
+                   Mon Association
+                </a>
+            </div>
+            <div class="offset-1 col-2 pt-4">
+                <a role="button" href="#" class="btn btn-outline-dark btn-lg btn-block">
+                   Mes Donations
+                </a>
+            </div>
+        </div>
+        <div class="row my-4 py-4">
+            <div class="offset-2 col-2 pt-4">
+                <a role="button" href="#" class="btn btn-outline-dark btn-lg btn-block">
+                   Mes Collectes
+                </a>
+            </div>
+            <div class="offset-1 col-2 pt-4">
+                <a role="button" href="#" class="btn btn-outline-dark btn-lg btn-block">
+                   Besoin d'aide?
+                </a>
+            </div>
+            <div class="offset-1 col-2 pt-4">
+                <a role="button" href="{% url 'account:logout' %}" class="btn btn-outline-dark btn-lg btn-block">
+                   Se déconnecter
+                </a>
+            </div>
+            </a>
+        </div>
+    </div>
+</section>
 
 
 {% endblock %}

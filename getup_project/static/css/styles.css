@@ -125,3 +125,11 @@ header.masthead-about {
   background-size: cover;
   color: white;
 }
+
+.border-account{
+    box-sizing: border-box;
+    width: 80%;
+    border: 2px solid black;
+    height: 5rem;
+    text-align: center;
+}
