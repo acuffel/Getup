@@ -111,8 +111,21 @@ header.masthead h1 {
 
 .registration-back {
 
-  background: url("../img/registration.jpg");
+  background: url("../img/wolf.jpg");
+  background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
   }
+
+header.masthead-search-asso {
+    background: url("../img/shoalfish.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    font-family: "PoppinsBold", sans-serif;
+}
 
 
 header.masthead-about {

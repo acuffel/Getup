@@ -56,11 +56,11 @@
 
 
 <section class="association-section" id="association-register">
-    <div class="container h-100 mt-4 pt-4">
-        <div class="row">
+    <div class="container h-100 mt-4 pt-4" >
+        <div class="row" style="color: white;">
             <div class="offset-1 col-6" style="border-radius: 50px; border: 2px solid black;">
 
-        <form action="{% url 'account:association_registration' %}" method="post">
+        <form action="{% url 'account:association_registration' %}" method="post" style="color: white;">
             {% csrf_token %}
             <div class="row mt-2">
                 <div class="offset-1 col-10">
@@ -140,7 +140,7 @@
 
 <div class="row mt-4">
     <div class="offset-2">
-        <a class="nav-link" href="{% url 'home:home' %}" style="color: white;"> Retour au site </a>
+        <a class="nav-link" href="{% url 'home:home' %}" style="color: black; font-weight: bold;"> Retour au site </a>
     </div>
 
 </div>

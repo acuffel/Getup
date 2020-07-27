@@ -14,7 +14,7 @@ class Address(models.Model):
 # Create an Association on DB
 class Association(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    picture = models.ImageField(null=True)
+    picture = models.ImageField(upload_to='images/')
     description = models.TextField(null=True)
     creation_date = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=100, null=True)

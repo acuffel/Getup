@@ -5,7 +5,7 @@ from django.forms.utils import ErrorList
 from django import forms
 import re
 
-from .models import CustomUser
+from .models import CustomUser, Association
 
 
 # Manage Error in account page
@@ -172,3 +172,11 @@ class AssociationForm(ModelForm):
         if password != re_password:
             raise ValidationError("Les Mots de passe ne correspondent pas")
         return re_password
+
+
+class UploadPicture(ModelForm):
+    picture = forms.FileInput(attrs={'size': 15, 'placeholder': 'Choose File'})
+
+    class Meta:
+        model = Association
+        fields = ['picture']
