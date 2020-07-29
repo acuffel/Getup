@@ -44,7 +44,7 @@
 
 <section class="search-asso">
     <div class="container mt-4">
-        {% if search_country|length_is:"0" %}
+        {% if search|length_is:"0" %}
         <div class="row text-center">
         <div class="col-12">
          <p class="text-muted"> Désolé, il n'y a aucune association correspondant à votre recherche </p>
@@ -53,15 +53,27 @@
 
         {% else %}
 
-        <div class="row text-center">
-            {% for asso in search_country %}
-            <div class="col-12">
+            {% for asso in search %}
+        <div class="row text-left my-3 ">
+
+            <div class="col-2">
+                <img src="{{MEDIA_URL}}{{ asso.picture }}" style="width: 7em; height:7em;">
+            </div>
+            <div class="col-2">
                 <p style="color: black;"> {{ asso.name }} </p>
             </div>
-            {% endfor %}
+            <div class="col-5 offset-1">
+                <p style="color: black;"> {{ asso.description }} </p>
+            </div>
+            <div class="col-2">
+                <p style="color: black;"> {{ asso.category }} </p>
+            </div>
+
        </div>
+        {% endfor %}
         {% endif %}
     </div>
+
 </section>
 
 

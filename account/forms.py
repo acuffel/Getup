@@ -174,9 +174,12 @@ class AssociationForm(ModelForm):
         return re_password
 
 
-class UploadPicture(ModelForm):
-    picture = forms.FileInput(attrs={'size': 15, 'placeholder': 'Choose File'})
+class UploadAssociation(ModelForm):
+    picture = forms.ImageField()
+    description = forms.TextInput()
+    category = forms.CharField(widget=forms.TextInput(
+        attrs={'size': 50}))
 
     class Meta:
         model = Association
-        fields = ['picture']
+        fields = ['picture', 'description', 'category']

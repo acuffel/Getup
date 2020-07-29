@@ -2,11 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
-from django.http import HttpResponse
 
 
 from .forms import LoginForm, ParagraphErrorList, MemberForm, AssociationForm, \
-    UploadPicture
+    UploadAssociation
 from .models import CustomUser, Association, Address
 
 
@@ -142,26 +141,34 @@ def show_association(request):
     info_asso = CustomUser.objects.filter(user_id=user_id).values('association_id')
     asso_id = [v['association_id'] for v in info_asso]
     my_association = Association.objects.filter(id=asso_id[0])
-    form = image_upload_view(request)
     context = {
         'my_association': my_association,
-        'form': form
     }
     return render(request, 'association/my_association.html', context)
 
 
-def image_upload_view(request):
+@csrf_exempt
+def asso_upload_view(request):
     """Process images uploaded by users"""
-    if request.method == 'POST':
-        form = UploadPicture(request.POST or None, request.FILES or None)
-        if form.is_valid():
-            print("form valid")
-            form.save()
-            img_obj = form.instance
-            return render(request,
-                          'association/my_association.html',
-                          {'form': form, 'picture': img_obj})
+    user_id = request.user.id
+    info_asso = CustomUser.objects.filter(user_id=user_id).values(
+        'association_id')
+    asso_id = [v['association_id'] for v in info_asso]
+    my_association = Association.objects.filter(id=asso_id[0])
+    form = UploadAssociation(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        print("form valid")
+        update_asso = Association.objects.get(id=asso_id[0])
+        update_asso.picture = form.cleaned_data["picture"]
+        update_asso.description = form.cleaned_data["description"]
+        update_asso.category = form.cleaned_data["category"]
+        update_asso.save()
+        return render(request,
+                      'association/welcome_association.html', locals())
     else:
+        context = {
+            'form': form,
+            'association': my_association,
+        }
         print("form not valid")
-        form = UploadPicture()
-    return render(request, 'association/my_association.html', {'form': form})
+    return render(request, 'association/update_association.html', context)

@@ -14,10 +14,13 @@ class Address(models.Model):
 # Create an Association on DB
 class Association(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    picture = models.ImageField(upload_to='images/')
+    picture = models.ImageField(upload_to='images/', default=None)
     description = models.TextField(null=True)
     creation_date = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 # Create a Custom User based on User library Django
