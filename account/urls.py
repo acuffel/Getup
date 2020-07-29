@@ -13,7 +13,7 @@ urlpatterns = [
     path('welcome/association', views.welcome_association,
          name='welcome_association'),
     path('info/association', views.show_information, name='show_information'),
-    path('my_association', views.show_association, name='show__association'),
+    path('my_association', views.show_association, name='show_association'),
     path('my_association/update_asso', views.asso_upload_view,
          name='update_asso'),
 ]

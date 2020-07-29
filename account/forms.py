@@ -36,6 +36,99 @@ class LoginForm(forms.Form):
         }
 
 
+# Create AssociationForm
+class AssociationForm(ModelForm):
+    name = forms.CharField(widget=forms.TextInput(attrs={'size': 50}))
+    street = forms.CharField(widget=forms.TextInput(attrs={'size': 50}))
+    zip_code = forms.IntegerField(
+        widget=forms.TextInput(
+            attrs={'size': 15, 'placeholder': 'Code Postal'}))
+    city = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'size': 15, 'placeholder': 'Ville'}))
+    country = forms.CharField(
+        widget=forms.TextInput(attrs={'size': 15, 'placeholder': 'Pays'}))
+    first_name = forms.CharField(
+        widget=forms.TextInput(attrs={'size': 25, 'placeholder': 'Prénom'}))
+    last_name = forms.CharField(
+        widget=forms.TextInput(attrs={'size': 25, 'placeholder': 'Nom'}))
+    email = forms.CharField(
+        widget=forms.TextInput(attrs={'size': 25, 'placeholder': 'Email'}))
+    re_email = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'size': 25, 'placeholder': 'Confirmez votre email'}))
+    password = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'size': 25, 'placeholder': 'Mot de passe'}))
+    re_password = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'size': 25, 'placeholder': 'Confirmez votre mot de passe'}))
+
+    class Meta:
+        model = CustomUser
+        fields = ['name', 'street', 'zip_code', 'city',
+                  'country', 'first_name', 'last_name', 'email',
+                  're_email', 'password', 're_password']
+        widget = {
+            'email': EmailInput(attrs={'class': 'form-control'}),
+            'password': PasswordInput(attrs={'class': 'form-control'})
+        }
+
+    # Check if email is not used
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise ValidationError("Cette email est déjà utilisé")
+        return email
+
+    def clean_re_email(self):
+        re_email = self.cleaned_data.get('re_email')
+        email = self.cleaned_data.get('email')
+        if email != re_email:
+            raise ValidationError("Les Emails ne correspondent pas")
+        return re_email
+
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        special_characters = ['@', '-', '/', '%', '$', '*', '&', '#']
+        if len(password) < 8:
+            raise ValidationError("Le mot de passe doit comporter"
+                                            " au moins 8 caracteres")
+        if not any(c in special_characters for c in password):
+            raise ValidationError(
+                "Le mot de passe doit comporter au moins 1 "
+                "caractere special : @ - / % $ * & #")
+        if re.search('[a-z]', password) is None:
+            raise ValidationError(
+                "Le mot de passe doit comporter au moins 1 minuscule")
+        if re.search('[A-Z]', password) is None:
+            raise ValidationError(
+                "Le mot de passe doit comporter au moins 1 majuscule")
+        if re.search('[0-9]', password) is None:
+            raise ValidationError(
+                "Le mot de passe doit comporter au moins 1 chiffre")
+        else:
+            return password
+
+    def clean_re_password(self):
+        re_password = self.cleaned_data.get('re_password')
+        password = self.cleaned_data.get('password')
+        if password != re_password:
+            raise ValidationError("Les Mots de passe ne correspondent pas")
+        return re_password
+
+
+class UploadAssociation(ModelForm):
+    picture = forms.ImageField()
+    description = forms.TextInput()
+    category = forms.CharField(widget=forms.TextInput(
+        attrs={'size': 50}))
+
+    class Meta:
+        model = Association
+        fields = ['picture', 'description', 'category']
+
+
 # Create MemberForm
 class MemberForm(ModelForm):
     civility = forms.CharField(label='Civilité')
@@ -89,97 +182,3 @@ class MemberForm(ModelForm):
             raise ValidationError(
                 "Le mot de passe doit comporter au moins 1 chiffre")
         return password
-
-
-# Create AssociationForm
-class AssociationForm(ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'size': 50}))
-    street = forms.CharField(widget=forms.TextInput(attrs={'size': 50}))
-    zip_code = forms.IntegerField(
-        widget=forms.TextInput(
-            attrs={'size': 15, 'placeholder': 'Code Postal'}))
-    city = forms.CharField(
-        widget=forms.TextInput(
-            attrs={'size': 15, 'placeholder': 'Ville'}))
-    country = forms.CharField(
-        widget=forms.TextInput(attrs={'size': 15, 'placeholder': 'Pays'}))
-    first_name = forms.CharField(
-        widget=forms.TextInput(attrs={'size': 25, 'placeholder': 'Prénom'}))
-    last_name = forms.CharField(
-        widget=forms.TextInput(attrs={'size': 25, 'placeholder': 'Nom'}))
-    email = forms.CharField(
-        widget=forms.TextInput(attrs={'size': 25, 'placeholder': 'Email'}))
-    re_email = forms.CharField(
-        widget=forms.TextInput(
-            attrs={'size': 25, 'placeholder': 'Confirmez votre email'}))
-    password = forms.CharField(
-        widget=forms.TextInput(
-            attrs={'size': 25, 'placeholder': 'Mot de passe'}))
-    re_password = forms.CharField(
-        widget=forms.TextInput(
-            attrs={'size': 25, 'placeholder': 'Confirmez votre mot de passe'}))
-
-    class Meta:
-        model = CustomUser
-        fields = ['name', 'street', 'zip_code', 'city',
-                  'country', 'first_name', 'last_name', 'email',
-                  're_email', 'password', 're_password']
-        widget = {
-            'email': EmailInput(attrs={'class': 'form-control'}),
-            'password': PasswordInput(attrs={'class': 'form-control'}),
-        }
-
-    # Check if email is not used
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
-        if User.objects.filter(email=email).exists():
-            raise ValidationError("Cette email est déjà utilisé")
-        return email
-
-    def clean_re_email(self):
-        re_email = self.cleaned_data.get('re_email')
-        email = self.clean_email()
-        print(re_email)
-        print(email)
-        if email != re_email:
-            raise ValidationError("Les Emails ne correspondent pas")
-        return re_email
-
-    def clean_password(self):
-        password = self.cleaned_data.get('password')
-        special_characters = ['@', '-', '/', '%', '$', '*', '&', '#']
-        if len(password) < 8:
-            raise ValidationError("Le mot de passe doit comporter"
-                                            " au moins 8 caracteres")
-        if not any(c in special_characters for c in password):
-            raise ValidationError(
-                "Le mot de passe doit comporter au moins 1 "
-                "caractere special : @ - / % $ * & #")
-        if re.search('[a-z]', password) is None:
-            raise ValidationError(
-                "Le mot de passe doit comporter au moins 1 minuscule")
-        if re.search('[A-Z]', password) is None:
-            raise ValidationError(
-                "Le mot de passe doit comporter au moins 1 majuscule")
-        if re.search('[0-9]', password) is None:
-            raise ValidationError(
-                "Le mot de passe doit comporter au moins 1 chiffre")
-        return password
-
-    def clean_re_password(self):
-        re_password = self.cleaned_data.get('re_password')
-        password = self.clean_password()
-        if password != re_password:
-            raise ValidationError("Les Mots de passe ne correspondent pas")
-        return re_password
-
-
-class UploadAssociation(ModelForm):
-    picture = forms.ImageField()
-    description = forms.TextInput()
-    category = forms.CharField(widget=forms.TextInput(
-        attrs={'size': 50}))
-
-    class Meta:
-        model = Association
-        fields = ['picture', 'description', 'category']

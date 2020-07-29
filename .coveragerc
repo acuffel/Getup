@@ -1,0 +1,19 @@
+[run]
+branch = True
+omit =
+       */venv*
+       *tests*
+       *apps.py*
+       */migrations/*
+       *event/*
+       *getup_project/*
+
+
+[report]
+omit =
+        */venv*
+        *tests*
+        *apps.py*
+        */migrations/*
+        *event/*
+        *getup_project/*

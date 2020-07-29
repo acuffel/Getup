@@ -24,7 +24,7 @@
                 <ul class="list-group">
                   <a href="{% url 'account:show_information' %}" class="list-group-item list-group-item-action">
                       MES INFOS </a>
-                  <a href="{% url 'account:show__association' %}" class="list-group-item list-group-item-action">
+                  <a href="{% url 'account:show_association' %}" class="list-group-item list-group-item-action">
                       MON ASSOCIATION</a>
                   <a href="#" class="list-group-item list-group-item-action">
                       MES DONS</a>
@@ -47,15 +47,15 @@
                 </div>
 
             </div>
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-12">
-                <p> Description de l'asso :</p>
+                <h5 style="font-weight: bold;"> Description de l'asso </h5>
                     <p> {{association.description}}</p>
                     </div>
             </div>
             <div class="row">
                  <div class="col-12">
-                <h5 class="justify"> Les catégories </h5>
+                <h5 p style="font-weight: bold;"> Les catégories </h5>
                      <p> {{association.category}} </p>
                  </div>
             </div>
