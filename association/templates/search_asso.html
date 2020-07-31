@@ -54,22 +54,33 @@
         {% else %}
 
             {% for asso in search %}
-        <div class="row text-left my-3 ">
 
-            <div class="col-2">
-                <img src="{{MEDIA_URL}}{{ asso.picture }}" style="width: 7em; height:7em;">
-            </div>
-            <div class="col-2">
-                <p style="color: black;"> {{ asso.name }} </p>
-            </div>
-            <div class="col-5 offset-1">
-                <p style="color: black;"> {{ asso.description }} </p>
-            </div>
-            <div class="col-2">
-                <p style="color: black;"> {{ asso.category }} </p>
+
+
+         <a href="{% url 'association:home_asso' association_id=asso.id %}" style="text-decoration: none;">
+            <div class="row my-3">
+                <div class="col-12">
+                <div class="result-view">
+                    <div class="row">
+                    <div class="col-2">
+                        <img src="{{MEDIA_URL}}{{ asso.picture }}" style="border-radius: 10%; width: 7em; height:7em;">
+                    </div>
+                    <div class="col-2 pt-4">
+                        <p style="color: black;"> {{ asso.name }} </p>
+                    </div>
+                    <div class="col-5 offset-1 pt-4">
+                        <p style="color: black;"> {{ asso.description }} </p>
+                    </div>
+                    <div class="col-2 pt-4">
+                        <p style="color: black;"> {{ asso.category }} </p>
+                    </div>
+                </div>
+                    </div>
+                </div>
             </div>
 
-       </div>
+        </a>
+
         {% endfor %}
         {% endif %}
     </div>

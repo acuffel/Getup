@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for asso in association %}
+
+<header class="masthead-home-asso">
+    <div class="container h-80">
+        <div class="row">
+            <div class="col-3" >
+                <img src="{{MEDIA_URL}}{{ asso.picture }}" style="border-radius: 5%; width: 10em; height:10em;">
+            </div>
+            <div class="offset-1 col-5 pt-4">
+                <h2 class="text-uppercase">{{ asso.name }}</h2>
+            </div>
+            <div class="offset-1 col-2 pt-4 mt-3">
+                <a type="button" class="btn btn-info" href="{% url 'association:make_donation' association_id=asso.id %}">
+                Faire un Don
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<hr class="fixed-subnav-list-hr">
+<div class="container">
+    <div class="row pt-2">
+        <div class="offset-2 col-2">
+            <a href="#collects" class="badge badge-light">
+                COLLECTES
+            </a>
+        </div>
+        <div class="offset-1 col-2">
+            <a href="#events" class="badge badge-light">
+                EVENTS
+            </a>
+        </div>
+        <div class="offset-1 col-2">
+            <a href="#about" class="badge badge-light">
+                QUI SOMMES-NOUS ?
+            </a>
+        </div>
+    </div>
+</div>
+<hr class="fixed-subnav-list-hr">
+
+
+<section class="about-section" id="about">
+    <div class="container h-40 pt-3">
+        <div class="row">
+            <div class="offset-1 col-3">
+                <p> <small> Notre vidéo arrive </small></p>
+                </div>
+            <div class="col-7 ">
+                <h4 class="mb-3 align-items-center text-left" style="text-decoration: underline;"> NOUS ALLONS VOUS PARLER DE NOUS ! </h4>
+                <p class="d-flex justify-content"> {{ asso.description }} </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="offset-1 col-3 mt-4 mb-4">
+                <p style="text-decoration: underline;"><em> Notre mission: </em></p>
+                <p style="text-decoration: underline;"><em>Nos actions: </em></p>
+                <p style="text-decoration: underline;"><em> Nos difficultés: </em></p>
+                <p style="text-decoration: underline;"><em> Nos besoins / Comment vous aider? </em></p>
+            </div>
+        </div>
+        <div class="row mt-4 mb-4">
+            <div class="offset-1 col-3">
+               <p style="text-decoration: underline;"> Retrouvez-nous! </p>
+                <p><small> {{ asso.name }}@asso.com</small> </p>
+                </div>
+            <div class="col-4" style="text-align:center;">
+                <button type="button" class="btn btn-outline-dark">
+                Nous contacter
+                </button>
+            </div>
+            <div class="col-3">
+                <p style="text-decoration: underline; color: red; text-align: right;"><small> Signaler cette page </small></p>
+                </div>
+
+        </div>
+    </div>
+</section>
+
+{% endfor %}
+
+{% endblock %}

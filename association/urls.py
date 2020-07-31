@@ -8,4 +8,8 @@ urlpatterns = [
     path('search/c', views.search_by_country, name='search_country'),
     path('search/ci', views.search_by_city, name='search_city'),
     path('search/na', views.search_by_name, name='search_name'),
+    path('home_association/<association_id>',
+         views.home_asso, name='home_asso'),
+    path('make_donation/<association_id>', views.make_donation,
+         name='make_donation'),
 ]

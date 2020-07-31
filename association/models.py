@@ -7,7 +7,6 @@ class Donor(models.Model):
     email = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     first_name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=15, null=True)
 
 
 # Create an Event on DB

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for asso in association %}
+
+<header class="masthead-home-asso">
+    <div class="container h-80">
+        <div class="row">
+
+            <div class="col-3" >
+                <img src="{{MEDIA_URL}}{{ asso.picture }}" style="border-radius: 5%; width: 10em; height:10em;">
+            </div>
+            <div class="offset-1 col-5 pt-4">
+                <h2 class="text-uppercase">{{ asso.name }}</h2>
+            </div>
+        </div>
+    </div>
+</header>
+
+<hr class="fixed-subnav-list-hr">
+
+
+<section class="about-section" id="about">
+    <div class="container h-40 pt-3">
+        <div class="row mb-4">
+            <div class="col-3">
+                <h5 class="border-asso"> MON DON </h5>
+                <div class="border-gift">
+                    <p> <small>Le montant de mon don </small></p>
+                 <input type="number" class="border-input-text input-8 text-center" placeholder="--,--" aria-label="amount_id" id="amount_id" style="width: 3.5rem;" data-min="0" autocomplete="off" data-validator="decimal"> €
+                </div>
+           </div>
+
+            <div class="col-3 offset-1">
+                <h5 class="border-asso"> MES COORDONNEES </h5>
+
+                {% if save %}
+                <p class="border-asso"> Merci! </p>
+                
+                {% else %}
+
+                <form action="{% url 'association:make_donation' asso.id %}" method="post" class="border-form pt-2">
+                    <p><small> Laissez-nous vos coordonnées </small></p>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Submit" />
+                </form>
+
+                {% endif %}
+
+            </div>
+            <div class="col-3 offset-1">
+                <h5 class="border-asso"> Ma Donation</h5>
+
+
+                <p>Thank you for donating!</p>
+                <form method="POST" action="create_paiement">
+                  <div>
+                    <label for="name">Name: </label>
+                    <input id="name" type="text" name="name">
+                  </div>
+                  <div>
+                    <label for="email">Email address: </label>
+                    <input id="email" type="email" name="email">
+                  </div>
+                  <div>
+                    <label for="amount">Amount: </label>
+                    <input id="amount" type="number" name="amount" min="1">
+                  </div>
+                  <div>
+                    <button type="submit">Next</button>
+                  </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endfor %}
+
+<!-- Core theme JS-->
+<script type="text/javascript" src="{% static 'js/donation.js' %}"></script>
+
+{% endblock %}
+
+
