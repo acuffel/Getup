@@ -14,27 +14,30 @@
         <hr class="divider my-2 py-2"/>
 
         <div class="row mt-4">
-            <div class="form-group offset-2 col-2">
-                <form class="form-inline" action="{% url 'association:search_country' %}" method="post">
+            <div class="form-group offset-1 col-3">
+                <form class="form-inline" action="{% url 'association:search_country' %}" method="post" id="search_country">
                     {% csrf_token %}
                 <div class="form-group">
                     <input type="text" class="form-control" name="search_country" placeholder="Pays" aria-label="search_country" aria-describedby="basic-addon2">
+                    <input type="button" value="Valider" class="btn btn-success" onclick="submitFormsCountry()"/>
                 </div>
                 </form>
             </div>
-            <div class="offset-1 col 2">
-                <form class="form-inline" action="{% url 'association:search_city' %}" method="post">
+            <div class="offset-1 col-3">
+                <form class="form-inline" action="{% url 'association:search_city' %}" method="post" id="search_city">
                     {% csrf_token %}
                 <div class="form-group">
                     <input type="text" class="form-control" name="search_city" placeholder="Ville | CP" aria-label="search_city" aria-describedby="basic-addon2">
+                    <input type="button" value="Valider" class="btn btn-success" onclick="submitFormsCity()"/>
                 </div>
                 </form>
             </div>
-            <div class="offset-1 col 2">
-                <form class="form-inline" action="{% url 'association:search_name' %}" method="post">
+            <div class="offset-1 col-3">
+                <form class="form-inline" action="{% url 'association:search_name' %}" method="post" id="search_name">
                     {% csrf_token %}
                 <div class="form-group">
                     <input type="text" class="form-control" name="search_name" placeholder="Nom" aria-label="search_name" aria-describedby="basic-addon2">
+                    <input type="button" value="Valider" class="btn btn-success" onclick="submitFormsName()"/>
                 </div>
                 </form>
             </div>

@@ -13,7 +13,7 @@ class DonorForm(ModelForm):
     last_name = forms.CharField(widget=forms.TextInput(
         attrs={'size': 20, 'placeholder': 'Nom'}), label='')
     amount = forms.IntegerField(widget=forms.TextInput(
-        attrs={'size': 20, 'placeholder': '--,--'}), label='')
+        attrs={'size': 20, 'placeholder': '--,-- €'}), label='')
 
     class Meta:
         model = Donor

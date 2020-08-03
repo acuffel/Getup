@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.conf import settings
 from django.http import JsonResponse
-import stripe
 from django.views.decorators.csrf import csrf_exempt
 
 from account.models import Association, Address, CustomUser
@@ -44,7 +43,6 @@ def search_by_name(request):
     name_filter = str(request.POST.get('search_name')).lower()
     association_filter = Association.objects.filter(
         name__contains=name_filter).values()
-    print(association_filter)
     context = {
         'search': association_filter,
     }
@@ -63,24 +61,21 @@ def home_asso(request, association_id):
 def make_donation(request, association_id):
     association = Association.objects.filter(id=association_id).values()
     form = DonorForm(request.POST or None)
-    save = False
     if form.is_valid():
         email = form.cleaned_data['email']
         first_name = form.cleaned_data['first_name'].lower()
         last_name = form.cleaned_data['last_name'].lower()
         amount = form.cleaned_data['amount']
-        create_payment(amount)
         donor = Donor.objects.create(email=email, first_name=first_name,
                                           last_name=last_name)
         donor.save()
-        form = DonorForm()
-        save = True
         context = {
             'association': association,
-            'form': form,
-            'save': save,
+            'amount': amount,
+            'name': first_name,
+            'email': email,
         }
-        return render(request, 'make_donation.html', context)
+        return render(request, 'payment.html', context)
     else:
         form = DonorForm()
         context = {
@@ -90,14 +85,16 @@ def make_donation(request, association_id):
         return render(request, 'make_donation.html', context)
 
 
-def create_payment(amount):
-    try:
-        intent = stripe.PaymentIntent.create(
-            amount=amount,
-            currency='eur',
-        )
-        return JsonResponse({
-          'clientSecret': intent['client_secret']
-        })
-    except Exception as e:
-        return JsonResponse({'error': str(e)})
+def validate_donation(request, email, association_id, amount):
+    donor = Donor.objects.get(email=email)
+    asso = Association.objects.get(id=association_id)
+    donation = Donation.objects.create(amount=amount, donor_id=donor,
+                                       association_id=asso)
+    donation.save()
+    association = Association.objects.filter(id=association_id).values()
+    context = {
+        'email': email,
+        'association': association,
+        'amount': amount,
+    }
+    return render(request, 'validate_donation.html', context)

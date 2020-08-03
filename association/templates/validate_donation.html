@@ -29,13 +29,11 @@
             <div class="col-6 offset-3">
                 <h5 class="border-asso"> Ma Donation</h5>
 
-                <p class="pt-4">Merci pour votre don!</p>
+                <p class="pt-4">Votre don de {{ amount }} € a été confirmé</p>
 
-                <form action="{% url 'association:make_donation' asso.id %}" method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit" value="Submit" />
-                </form>
+                <p> Un mail de confirmation vous a été envoyé à l'adresse suivante:  {{ email }} </p>
+
+                <a href="{% url 'home:home' %}"> Retour au menu principal</a>
 
             </div>
         </div>
@@ -46,5 +44,3 @@
 
 
 {% endblock %}
-
-

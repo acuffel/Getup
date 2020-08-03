@@ -26,4 +26,4 @@ class Donation(models.Model):
     association_id = models.ForeignKey(Association, on_delete=models.CASCADE,
                                        null=True)
     event_id = models.ForeignKey(Event, on_delete=models.CASCADE, null=True)
-    donor_id = models.OneToOneField(Donor, null=True, on_delete=models.CASCADE)
+    donor_id = models.ForeignKey(Donor, null=True, on_delete=models.CASCADE)

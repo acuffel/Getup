@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<header class="masthead">
+<header class="masthead-home">
     <div class="container h-80">
         <div class="row align-items-center justify-content-center text-center mt-2 pt-5">
             <div class="col-10 align-self-end">
@@ -18,14 +18,14 @@
         </div>
         <div class="row">
             <div class="col-2 offset-3">
-                <button type="button" class="btn btn-outline-dark" id="home-donation">
+                <a type="button" class="btn btn-outline-dark" href="{% url 'association:search_asso' %}">
                 Je fais un don
-                </button>
+                </a>
             </div>
             <div class="col-2 offset-2">
-                <button type="button" class="btn btn-outline-dark" id="home-association">
+                <a type="button" class="btn btn-outline-dark" href="{% url 'account:association_registration' %}">
                 J'inscris mon asso
-                </button>
+                </a>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
         <div class="row">
             <div class="col-4">
                 <div class="embed-responsive embed-responsive-16by9">
-                  <iframe class="embed-responsive-item" src="{% static 'img/video_presentation.mp4' %}"></iframe>
+                  <iframe class="embed-responsive-item" src="{% static 'img/video_presentation.mp4' %}" id="home-video"></iframe>
                 </div>
             </div>
             <div class="col-8">

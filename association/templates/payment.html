@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for asso in association %}
+
+<header class="masthead-home-asso">
+    <div class="container h-80">
+        <div class="row">
+
+            <div class="col-3" >
+                <img src="{{MEDIA_URL}}{{ asso.picture }}" style="border-radius: 5%; width: 10em; height:10em;">
+            </div>
+            <div class="offset-1 col-5 pt-4">
+                <h2 class="text-uppercase">{{ asso.name }}</h2>
+            </div>
+        </div>
+    </div>
+</header>
+
+<hr class="fixed-subnav-list-hr">
+
+
+<section class="about-section" id="about">
+    <div class="container h-40 pt-3">
+        <div class="row mb-4">
+
+                <div class="col-6 offset-3">
+                    <h5 class="border-asso"> Ma Donation</h5>
+
+                    <p class="pt-4">Merci, {{name}}, pour ta générosité! Tu peux finaliser ton don en validant le montant ci-dessous.</p>
+
+                    <p>Ton Don: {{ amount }} € </p>
+                    <a type="button" class="btn btn-success" href="{% url 'association:validate_donation' email=email amount=amount association_id=asso.id%}">
+                        Valider
+                    </a>
+
+                </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+{% endfor %}
+
+<!-- Core theme JS-->
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript" src="{% static 'js/donation.js' %}"></script>
+
+{% endblock %}

@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'account',
     'association',
     'event',
-    'djstripe',
 ]
 
 MIDDLEWARE = [
@@ -151,12 +150,4 @@ MEDIA_URL = '/media/'
 
 # Path where media is stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
-# Stripe keys
-STRIPE_LIVE_PUBLIC_KEY = os.environ.get("STRIPE_LIVE_PUBLIC_KEY", "")
-STRIPE_LIVE_SECRET_KEY = os.environ.get("STRIPE_LIVE_SECRET_KEY", "")
-STRIPE_TEST_PUBLIC_KEY = os.environ.get("STRIPE_TEST_PUBLIC_KEY", "pk_test_51HAXIgD3sVFxqYqwBvxMVNE1dZOAlWcX4emDTsQy5OIN9DrKoFkiluVQpOptE8EJdpiu86uhOScgkhDjwclaLAF900Ne0yAm5v")
-STRIPE_TEST_SECRET_KEY = os.environ.get("STRIPE_TEST_SECRET_KEY", "sk_test_51HAXIgD3sVFxqYqwzFWfVvT8daEiZUH9W9P75wRYJ29i8SjG88ZCbrWenmpWTLfyL5WJqlY4kkM3Wd5bVTOFwp5500UQWW9ACy")
-STRIPE_LIVE_MODE = False  # Change to True in production
-DJSTRIPE_WEBHOOK_SECRET = "whsec_xxx"  # Get it from the section in the Stripe dashboard where you added the webhook endpoint
 

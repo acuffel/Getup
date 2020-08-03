@@ -7,3 +7,4 @@ def homepage(request):
     :return: HomePage
     """
     return render(request, 'home/homepage.html', locals())
+
