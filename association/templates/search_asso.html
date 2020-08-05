@@ -48,7 +48,7 @@
 <section class="search-asso">
     <div class="container mt-4">
 
-
+        {% if search is none %}
         <div class="row" id="no-search">
             <div class="col-12 text-center" style="height:40vh;">
             <p><small>
@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        {% if search|length_is:"0" %}
+        {% elif search|length_is:"0" %}
         <div class="row text-center">
         <div class="col-12">
          <p class="text-muted"> Désolé, il n'y a aucune association correspondant à votre recherche </p>
@@ -67,7 +67,6 @@
         {% else %}
 
             {% for asso in search %}
-
 
 
          <a href="{% url 'association:home_asso' association_id=asso.id %}" style="text-decoration: none;">
