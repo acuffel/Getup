@@ -9,8 +9,8 @@
     <div class="container h-80">
         <div class="row">
 
-            <div class="col-3" >
-                <img src="{{MEDIA_URL}}{{ asso.picture }}" style="border-radius: 5%; width: 10em; height:10em;">
+            <div class="col-3 pt-4">
+                <img src="{{MEDIA_URL}}{{ asso.picture }}" style="border-radius: 5%; ">
             </div>
             <div class="offset-1 col-5 pt-4">
                 <h2 class="text-uppercase">{{ asso.name }}</h2>
@@ -22,7 +22,7 @@
 <hr class="fixed-subnav-list-hr">
 
 
-<section class="about-section" id="about">
+<section class="search-asso">
     <div class="container h-40 pt-3">
         <div class="row mb-4">
 
@@ -32,7 +32,7 @@
                     <p class="pt-4">Merci, {{name}}, pour ta générosité! Tu peux finaliser ton don en validant le montant ci-dessous.</p>
 
                     <p>Ton Don: {{ amount }} € </p>
-                    <a type="button" class="btn btn-success" href="{% url 'association:validate_donation' email=email amount=amount association_id=asso.id%}">
+                    <a type="button" class="btn btn-success" href="{% url 'association:validate_donation' email=email amount=amount association_id=asso.id%}" id="payment-button">
                         Valider
                     </a>
 

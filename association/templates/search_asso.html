@@ -4,17 +4,17 @@
 {% block content %}
 
 <header class="masthead-search-asso">
-    <div class="container" style="height: 250px;">
+    <div class="container" >
 
         <div class="row mt-5 pt-5">
             <div class="col-12 text-center">
-                <h4> Trouver vos assos en un clic ou découvrez-en de nouvelles !</h4>
+                <h4 id="search-title"> Trouver vos assos en un clic ou découvrez-en de nouvelles !</h4>
             </div>
         </div>
         <hr class="divider my-2 py-2"/>
 
         <div class="row mt-4">
-            <div class="form-group offset-1 col-3">
+            <div class="form-group col-3">
                 <form class="form-inline" action="{% url 'association:search_country' %}" method="post" id="search_country">
                     {% csrf_token %}
                 <div class="form-group">
@@ -47,6 +47,16 @@
 
 <section class="search-asso">
     <div class="container mt-4">
+
+
+        <div class="row" id="no-search">
+            <div class="col-12 text-center" style="height:40vh;">
+            <p><small>
+                Ici, les résultats de votre recherche
+            </small></p>
+            </div>
+        </div>
+
         {% if search|length_is:"0" %}
         <div class="row text-center">
         <div class="col-12">
@@ -66,15 +76,15 @@
                 <div class="result-view">
                     <div class="row">
                     <div class="col-2">
-                        <img src="{{MEDIA_URL}}{{ asso.picture }}" style="border-radius: 10%; width: 7em; height:7em;">
+                        <img src="{{MEDIA_URL}}{{ asso.picture }}" style="border-radius: 10%; ">
                     </div>
-                    <div class="col-2 pt-4">
+                    <div class="col-2 pt-2">
                         <p style="color: black;"> {{ asso.name }} </p>
                     </div>
-                    <div class="col-5 offset-1 pt-4">
+                    <div class="col-5 offset-1 pt-2">
                         <p style="color: black;"> {{ asso.description }} </p>
                     </div>
-                    <div class="col-2 pt-4">
+                    <div class="col-2 pt-2">
                         <p style="color: black;"> {{ asso.category }} </p>
                     </div>
                 </div>
@@ -89,7 +99,6 @@
     </div>
 
 </section>
-
 
 
 {% endblock %}

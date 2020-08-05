@@ -8,8 +8,8 @@
 <header class="masthead-home-asso">
     <div class="container h-80">
         <div class="row">
-            <div class="col-3" >
-                <img src="{{MEDIA_URL}}{{ asso.picture }}" style="border-radius: 5%; width: 10em; height:10em;">
+            <div class="col-3 pt-4" >
+                <img src="{{MEDIA_URL}}{{ asso.picture }}" style="border-radius: 5%;">
             </div>
             <div class="offset-1 col-5 pt-4">
                 <h2 class="text-uppercase">{{ asso.name }}</h2>
@@ -24,7 +24,7 @@
 </header>
 
 <hr class="fixed-subnav-list-hr">
-<div class="container">
+<div class="container" id="asso-title">
     <div class="row pt-2">
         <div class="offset-2 col-2">
             <a href="#collects" class="badge badge-light">
@@ -72,7 +72,7 @@
                 <p><small> {{ asso.name }}@asso.com</small> </p>
                 </div>
             <div class="col-4" style="text-align:center;">
-                <button type="button" class="btn btn-outline-dark">
+                <button type="button" class="btn btn-outline-dark" id="contact-button">
                 Nous contacter
                 </button>
             </div>

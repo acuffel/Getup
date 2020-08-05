@@ -28,30 +28,59 @@
 
 
 header.masthead-home {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 4.5rem);
+  padding-top: 10vw;
+  padding-bottom: 10vw;
   background: url("../img/homepage.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
+  background-size: contain;
+  height: 100%;
 }
-header.masthead h1 {
-  font-size: 2.25rem;
+header.masthead-home h1 {
+  font-size: 4vw;
   color: rgba(165,42,42, 0.8);
   font-family: "PoppinsBold", sans-serif;
 }
 
+header.masthead-home h3 {
+  font-size: 3.5vw;
+  font-family: "PoppinsBold", sans-serif;
+}
+
+header.masthead-home a {
+  font-size: 2vw;
+}
+
+@media screen and (max-width: 640px)
+    {
+        header.masthead-home hr {
+            display: none;
+        }
+        header.masthead-home {
+              padding-bottom: 0px;
+        }
+    }
+
+
 .homepage-section h3{
     font-family: "PoppinsBold", sans-serif;
+    font-size: 3vw;
 }
+
+.homepage-section p,button{
+    font-size: 2vw;
+}
+
+
 
 #about-us {
     font-family: "PoppinsLight", sans-serif;
 }
 
-#sticky-footer {
-    font-size: small;
+#sticky-footer li{
+    font-size: 1vw;
 }
 
 #sticky-footer ul {
@@ -67,13 +96,31 @@ header.masthead h1 {
 }
 
 .login-section {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
+  padding: 20vh;
   display: flex;
-  padding-top: 20vh;
   background: url("../img/jungle.jpg");
-
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  height: 100%
   }
+
+.login-section h3{
+    font-size: 2.5vw;
+}
+
+.login-section p{
+    font-size: 1.5vw;
+}
+
+.login-section input{
+    font-size: 1.5vw;
+}
+
+.login-section a{
+    font-size: 1.5vw;
+}
 
 .Radio {
   margin: 0 0.5rem 0;
@@ -106,28 +153,153 @@ header.masthead-search-asso {
     font-family: "PoppinsBold", sans-serif;
 }
 
+@media screen and (max-width: 640px)
+    {
+        header.masthead-search-asso #search-title{
+        font-size: 2.5vh;
+        }
+    }
+
+header.masthead-search-asso h4{
+    font-size: 2.5vw;
+}
+
+header.masthead-search-asso input{
+    font-size: 1.25vw;
+   }
+
+
+
+.search-asso input{
+    font-size: 1.25vw;
+}
+
+#payment-button{
+    font-size: 1.25vw;
+}
+
+#back-home{
+    font-size: 1.25vw;
+}
+
+.search-asso p{
+    font-size: 1.5vw;
+}
+
+#contact-button{
+    font-size: 1.5vw;
+}
+
+.search-asso img{
+    height: 10vw;
+    width: 10vw;
+    }
+
+
 
 header.masthead-about {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 4.5rem);
+  padding-top: 10vw;
+  padding-bottom: 10vw;
   background: url("../img/about.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
   color: white;
+  height: 100%;
+}
+
+header.masthead-about h2 {
+    font-size: 3vw;
+}
+
+header.masthead-about p{
+    font-size: 1.5vw;
+}
+
+header.masthead-about button {
+    font-size: 2vw;
+}
+
+#about-title a{
+    font-size: 2vw;
+}
+
+#asso-title a{
+    font-size: 2vw;
+}
+
+.about-section h4, h5 {
+    font-size: 2vw;
+}
+
+.about-section p {
+    font-size: 1.5vw;
+}
+
+.about-section img {
+    height: auto;
+    width: auto;
+}
+
+.about-commitment h4, h5 {
+    font-size: 2vw;
+}
+
+.about-commitment p {
+    font-size: 1.5vw;
+}
+
+.about-commitment img {
+    height: auto;
+    width: auto;
+}
+
+.about-values h4, h5 {
+    font-size: 2vw;
+}
+
+.about-values p {
+    font-size: 1.5vw;
+}
+
+@media screen and (max-width: 640px)
+    {
+        .about-values #passion,#integrity,#engagement,#solidarity {
+        font-size: 1.5em;
+        }
+    }
+
+.about-team h4, h5 {
+    font-size: 2vw;
 }
 
 header.masthead-home-asso {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 4.5rem);
+  padding-top: 15vw;
+  padding-bottom: 5vw;
   background: url("../img/corn.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
-    font-family: "PoppinsLight", sans-serif;
+  font-family: "PoppinsLight", sans-serif;
 }
+
+
+.masthead-home-asso img{
+    vertical-align: center;
+    height: 20vw;
+    width: 15vw;
+}
+
+.masthead-home-asso h2{
+    font-size: 3vw;
+}
+
+.masthead-home-asso a{
+    height: auto;
+    width: auto;
+        }
 
 .border-account{
     box-sizing: border-box;
@@ -137,8 +309,15 @@ header.masthead-home-asso {
     text-align: center;
 }
 
+.masthead-home .btn{
+        height: 100%;
+        width: auto;
+        }
+
+
+
 .result-view{
-    border-radius: 10px;
+    border-radius: 15px;
     border: 0.5px solid grey;
     text-left;
     box-shadow: 1px 1px 1px 1px #888888;
@@ -151,8 +330,8 @@ header.masthead-home-asso {
     border: 0.5px solid grey;
     text-align: center;
     box-shadow: 1px 1px 1px 1px #888888;
-    width:15rem;
-    height:2rem;
+    width:15vw;
+    height:4vw;
 }
 
 .border-gift {
@@ -206,14 +385,3 @@ header.masthead-home-asso {
   background-color: #fefde5 !important;
   }
 
-
-@media (max-width: 1024px)
-{
-      .masthead-home .btn{
-        height: 60px;
-        width: 100px;
-      }
-
-
-
-}

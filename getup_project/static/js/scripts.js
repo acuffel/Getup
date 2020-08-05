@@ -86,18 +86,15 @@ $("#home-video").contents().find('body').html(frameContent.replace("autoplay", "
 
 })(jQuery); // End of use strict
 
+
 submitFormsCountry = function(){
-    var search_country = document.getElementById("search_country");
-    search_country.submit();
+    $("#search_country").submit();
     }
 
 submitFormsCity = function(){
-    var search_city = document.getElementById("search_city");
-    search_city.submit();
+    $("#search_city").submit();
     }
 
 submitFormsName = function(){
-    var search_name = document.getElementById("search_name");
-    search_name.submit();
+    $("#search_name").submit();
     }
-

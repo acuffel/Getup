@@ -27,7 +27,7 @@
 
     <div class="container h-100">
         <div class="row d-flex justify-content-start mt-2 pt-5">
-            <div class="offset-1 col-3">
+            <div class="offset-1">
                 <h3 style="color: white;"> Je me connecte </h3>
                     <form action="{% url 'account:login' %}" method="post" id="login-form">
                         {% csrf_token %}
@@ -40,12 +40,12 @@
             </div>
         </div>
         <div class="row text-left mt-4 pt-1">
-            <div class="offset-1 col-3">
-                <a class="nav-link" style="font-size: 1.5em; color: white;" href="{% url 'account:member_registration' %}"> Je créé un compte </a>
+            <div class="offset-1">
+                <a class="nav-link" style="color: white; font-weight: bold;" href="{% url 'account:member_registration' %}"> Je créé un compte </a>
             </div>
         </div>
         <div class="row text-left mt-4 pt-1">
-            <div class="offset-1 col-3">
+            <div class="offset-1">
                 <a class="nav-link" href="{% url 'home:home' %}" style="color: white;"> Retour au site </a>
             </div>
         </div>
