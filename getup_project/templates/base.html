@@ -28,52 +28,52 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="nav navbar-nav navbar-right mr-4" id="list-nav" >
-                    <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about:about' %}">A propos de nous</a>
-                  </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="{% url 'association:search_asso' %}">Associations</a>
-                  </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Evènements</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Faire un don</a>
-                  </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="account" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Mon compte
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'account:welcome_association' %}" >Mon Association</a>
-                            <a class="dropdown-item" href="{% url 'account:logout' %}">Se déconnecter</a>
-                        </div>
-                    </li>
-                        {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account:login' %}">Mon compte</a>
-                        {% endif %}
-                    </li>
-                    <li>
-                        <button type="submit" class="btn btn-search" id="get-top-bar">
-                            <span class="fa fa-search fa-lg" aria-hidden="true"></span>
-                        </button>
-                    </li>
-                </ul>
-                <div class="nav navbar-nav navbar-right" id="search-top-bar" style="display: none;">
-                    <form class="form-inline" action="{% url 'association:search_name' %}" method='post'>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="nav navbar-nav navbar-right ml-auto" id="list-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about:about' %}">A propos de nous</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'association:search_asso' %}">Associations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Evènements</a>
+                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Faire un don</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="account" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Mon compte
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{% url 'account:welcome_association' %}" >Mon Association</a>
+                                <a class="dropdown-item" href="{% url 'account:logout' %}">Se déconnecter</a>
+                            </div>
+                        </li>
+                            {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account:login' %}">Mon compte</a>
+                            {% endif %}
+                        </li>
+                        <li>
+                            <button type="submit" class="btn btn-search" id="get-top-bar">
+                                <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="nav navbar-nav navbar-right" id="search-top-bar" style="display: none;">
+                        <form class="form-inline" action="{% url 'association:search_name' %}" method='post'>
                         {% csrf_token %}
-                      <input type="text" class="form-control" name="search_name" placeholder="Que recherchez vous?" aria-label="Search" size="100" >
-                        <button type="submit" class="btn btn-window-close">
-                                    <span class="fa fa-window-close fa-2x"></span>
+                            <input type="text" class="form-control" name="search_name" placeholder="Que recherchez vous?" aria-label="Search" size="100" >
+                             <button type="submit" class="btn btn-window-close">
+                                 <span class="fa fa-window-close fa-2x"></span>
                            </button>
-                  </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
         </nav>
 
         {% block content %}{% endblock %}
