@@ -31,5 +31,6 @@ class CustomUser(models.Model):
     phone = models.CharField(max_length=15, null=True)
     birth_date = models.DateField(null=True)
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
-    association = models.OneToOneField(Association, on_delete=models.CASCADE)
+    association = models.OneToOneField(Association, on_delete=models.CASCADE,
+                                       null=True)
     user_type = models.CharField(max_length=2)

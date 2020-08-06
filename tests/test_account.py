@@ -69,8 +69,13 @@ class AccountFormTestCase(TestCase):
         Creation Nominal Login Form without
         :return: True
         """
+        User.objects.create_user(username='alex@gmail.com',
+                                 email='alex@gmail.com',
+                                 password='Password123!',
+                                 last_name='carlos',
+                                 first_name='roberto')
         data = {
-            'username': 'alex',
+            'username': 'alex@gmail.com',
             'password': 'toto',
         }
         form = LoginForm(data)
@@ -251,10 +256,12 @@ class AccountViewsTestCase(TestCase):
         Login with Username and Password
         :return: status 200
         """
-        user = self.client.login(username="alex@gmail.com",
-                                 password="Password123!")
-        self.assertTrue(user)
-        response = self.client.get('/')
+        data = {
+            'username': "alex@gmail.com",
+            'password': "Password123!",
+        }
+        response = self.client.get(reverse('account:login'),
+                                            {'context': data})
         self.assertTrue(response.status_code, 302)
 
     def test_logout(self):
@@ -294,6 +301,58 @@ class AccountViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(Address.objects.count(), adress_count + 1)
         self.assertEqual(Association.objects.count(), asso_count + 1)
+        self.assertEqual(User.objects.count(), user_count + 1)
+        self.assertEqual(CustomUser.objects.count(), customuser_count + 1)
+
+    def test_association_registration_error(self):
+        """
+        Create an Association account
+        :return: The models get one more row with new data
+        """
+        data = {
+            'name': 'alex',
+            'street': 'toto',
+            'zip_code': '35000',
+            'city': 'Rennes',
+            'country': 'France',
+            'first_name': 'roberto',
+            'last_name': 'carlos',
+            'email': 'al@g.com',
+            're_email': 'al@g.com',
+            'password': 'Password12/',
+        }
+        response = self.client.post(reverse('account:association_registration'),
+                                    data)
+        self.assertEqual(response.status_code, 200)
+
+    def test_member_registration(self):
+        """
+        Create an Association account
+        :return: The models get one more row with new data
+        """
+        adress_count = Address.objects.count()
+        user_count = User.objects.count()
+        customuser_count = CustomUser.objects.count()
+        data = {
+            'civility': 'mr',
+            'birth_date': '2020-03-22',
+            'phone': '024345464354',
+            'street': 'toto',
+            'zip_code': '35000',
+            'city': 'Rennes',
+            'country': 'France',
+            'first_name': 'roberto',
+            'last_name': 'carlos',
+            'email': 'al@g.com',
+            're_email': 'al@g.com',
+            'password': 'Password12/',
+            're_password': 'Password12/',
+        }
+        response = self.client.post(
+            reverse('account:member_registration'),
+            data)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Address.objects.count(), adress_count + 1)
         self.assertEqual(User.objects.count(), user_count + 1)
         self.assertEqual(CustomUser.objects.count(), customuser_count + 1)
 

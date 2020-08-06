@@ -12,6 +12,7 @@ urlpatterns = [
          views.home_asso, name='home_asso'),
     path('make_donation/<association_id>', views.make_donation,
          name='make_donation'),
-    path('validate_donation/<association_id>/<email>/<amount>', views.validate_donation,
+    path('validate_donation/<association_id>/<email>/<amount>',
+         views.validate_donation,
          name='validate_donation'),
 ]

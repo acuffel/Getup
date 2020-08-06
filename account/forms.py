@@ -35,6 +35,13 @@ class LoginForm(forms.Form):
             'password': PasswordInput(attrs={'class': 'form-control'}),
         }
 
+    # Check if email is not used
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if not User.objects.filter(username=username).exists():
+            raise ValidationError("Cette email n'est pas valide")
+        return username
+
 
 # Create AssociationForm
 class AssociationForm(ModelForm):
@@ -135,6 +142,11 @@ class MemberForm(ModelForm):
     first_name = forms.CharField(label='Prenom')
     last_name = forms.CharField(label='Nom')
     birth_date = forms.DateField(label='Date de naissance')
+    phone = forms.CharField(label='Portable')
+    street = forms.CharField(label='Rue')
+    zip_code = forms.CharField(label='Code Postal')
+    city = forms.CharField(label='Ville')
+    country = forms.CharField(label='Pays')
     email = forms.CharField(label='Adresse email')
     re_email = forms.CharField(label='Validez votre adresse email')
     password = forms.CharField(label='Mot de passe')
@@ -142,8 +154,9 @@ class MemberForm(ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ['civility', 'first_name', 'last_name', 'birth_date',
-                  'email', 're_email', 'password', 're_password']
+        fields = ['civility', 'first_name', 'last_name', 'birth_date', 'phone',
+                  'street', 'zip_code', 'city', 'country', 'email',
+                  're_email', 'password', 're_password']
         widget = {
             'email': EmailInput(attrs={'class': 'form-control'}),
             'password': PasswordInput(attrs={'class': 'form-control'}),
@@ -152,18 +165,19 @@ class MemberForm(ModelForm):
     # Check if email is not used
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        re_email = self.cleaned_data.get('re_email')
-        if email != re_email:
-            raise ValidationError("Les emails ne correspondent pas")
         if User.objects.filter(email=email).exists():
             raise ValidationError("Cette email est déjà utilisé")
         return email
 
+    def clean_re_email(self):
+        re_email = self.cleaned_data.get('re_email')
+        email = self.cleaned_data.get('email')
+        if email != re_email:
+            raise ValidationError("Les Emails ne correspondent pas")
+        return re_email
+
     def clean_password(self):
         password = self.cleaned_data.get('password')
-        re_password = self.cleaned_data.get('re_password')
-        if password != re_password:
-            raise ValidationError("Les mots de passe ne correspondent pas")
         special_characters = ['@', '-', '/', '%', '$', '*', '&', '#']
         if len(password) < 8:
             raise ValidationError("Le mot de passe doit comporter"
@@ -181,4 +195,12 @@ class MemberForm(ModelForm):
         if re.search('[0-9]', password) is None:
             raise ValidationError(
                 "Le mot de passe doit comporter au moins 1 chiffre")
-        return password
+        else:
+            return password
+
+    def clean_re_password(self):
+        re_password = self.cleaned_data.get('re_password')
+        password = self.cleaned_data.get('password')
+        if password != re_password:
+            raise ValidationError("Les Mots de passe ne correspondent pas")
+        return re_password

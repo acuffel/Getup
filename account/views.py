@@ -59,21 +59,39 @@ def member_registration(request):
     """
     form = MemberForm(request.POST or None, error_class=ParagraphErrorList)
     if form.is_valid():
-        civility = form.cleaned_data['civility']
-        first_name = form.cleaned_data['first_name']
-        last_name = form.cleaned_data['last_name']
+        civility = form.cleaned_data['civility'].lower()
+        first_name = form.cleaned_data['first_name'].lower()
+        last_name = form.cleaned_data['last_name'].lower()
         birth_date = form.cleaned_data['birth_date']
+        phone = form.cleaned_data['phone']
+        street = form.cleaned_data['street'].lower()
+        zip_code = form.cleaned_data['zip_code']
+        city = form.cleaned_data['city'].lower()
+        country = form.cleaned_data['country'].lower()
         email = form.cleaned_data['email']
+        re_email = form.cleaned_data['re_email']
         password = form.cleaned_data['password']
-        """
-        member = Member.objects.create(username, email, password)
-        Member.save()
-        form = LoginForm(None)
-        """
-    context = {
-        'form': form
-    }
-    return render(request, 'login/registration_member.html', context)
+        re_password = form.cleaned_data['re_password']
+        user = User.objects.create_user(username=email, email=email,
+                                        password=password,
+                                        last_name=last_name,
+                                        first_name=first_name)
+        address = Address.objects.create(street=street, zip_code=zip_code,
+                                         city=city,
+                                         country=country)
+        # ME Like Member
+        user_type = 'ME'
+        custom_user = CustomUser.objects.create(user=user, address=address,
+                                                civility=civility, phone=phone,
+                                                birth_date=birth_date,
+                                                user_type=user_type)
+        user.save()
+        address.save()
+        custom_user.save()
+        form = LoginForm()
+        return render(request, 'login/login.html', {'form': form})
+    else:
+        return render(request, 'login/registration_member.html', locals())
 
 
 @csrf_exempt
