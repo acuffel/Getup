@@ -49,8 +49,15 @@ header.masthead-home h3 {
   font-family: "PoppinsBold", sans-serif;
 }
 
+header.masthead-home p {
+  font-size: 2vw;
+}
+
+
 header.masthead-home a {
   font-size: 2vw;
+  height: auto;
+  width: auto;
 }
 
 @media screen and (max-width: 640px)
