@@ -128,6 +128,9 @@ class AssociationViewsTestCase(TestCase):
                                                 association_id=self.association)
 
     def test_home_asso(self):
+        """
+        :return: Status code 200
+        """
         asso_id = self.association.id
         response = self.client.get(reverse('association:home_asso',
                                            args=(asso_id,)))
@@ -135,28 +138,43 @@ class AssociationViewsTestCase(TestCase):
         self.assertContains(response, 'Faire un Don')
 
     def test_search_city(self):
+        """
+        :return: Status code 200
+        """
         city = self.address.city
         response = self.client.post(reverse('association:search_city'),
                                            {'search_city': city})
         self.assertEqual(response.status_code, 200)
 
     def test_search_country(self):
+        """
+        :return: Status code 200
+        """
         country = self.address.country
         response = self.client.post(reverse('association:search_country'),
                                            {'search_country': country})
         self.assertEqual(response.status_code, 200)
 
     def test_search_name(self):
+        """
+        :return: Status code 200
+        """
         name = 'Mon'
         response = self.client.post(reverse('association:search_name'),
                                            {'search_name': name})
         self.assertEqual(response.status_code, 200)
 
     def test_search_asso(self):
+        """
+        :return: Status code 200
+        """
         response = self.client.get(reverse('association:search_asso'))
         self.assertEqual(response.status_code, 200)
 
     def test_make_donation(self):
+        """
+        :return: Status code 200
+        """
         data = {
             'email': 'donor@mail.fr',
             'first_name': 'Alfred',

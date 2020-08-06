@@ -119,6 +119,9 @@ class AccountFormTestCase(TestCase):
         # test password length
 
     def test_password_length(self):
+        """
+        :return: Error because the password is less than 8 characters
+        """
         data = {
             'name': 'alex',
             'street': 'toto',
@@ -141,6 +144,9 @@ class AccountFormTestCase(TestCase):
         # test password uppercase
 
     def test_password_upper(self):
+        """
+        :return: Error because password didn't contains upper letter
+        """
         data = {
             'name': 'alex',
             'street': 'toto',
@@ -163,6 +169,9 @@ class AccountFormTestCase(TestCase):
         # test password lowercase
 
     def test_password_lower(self):
+        """
+        :return: Error because password didn't contains lower letter
+        """
         data = {
             'name': 'alex',
             'street': 'toto',
@@ -185,6 +194,9 @@ class AccountFormTestCase(TestCase):
         # test password special character
 
     def test_password_spe(self):
+        """
+        :return: Error because password didn't contains special letter
+        """
         data = {
             'name': 'alex',
             'street': 'toto',
@@ -208,6 +220,9 @@ class AccountFormTestCase(TestCase):
         # test password number
 
     def test_password_number(self):
+        """
+        :return: Error because password didn't contains number
+        """
         data = {
             'name': 'alex',
             'street': 'toto',

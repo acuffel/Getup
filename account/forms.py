@@ -37,6 +37,10 @@ class LoginForm(forms.Form):
 
     # Check if email is not used
     def clean_username(self):
+        """
+        Check if username is in database
+        :return: Username
+        """
         username = self.cleaned_data.get('username')
         if not User.objects.filter(username=username).exists():
             raise ValidationError("Cette email n'est pas valide")
@@ -83,12 +87,20 @@ class AssociationForm(ModelForm):
 
     # Check if email is not used
     def clean_email(self):
+        """
+        Check if Email is not already used
+        :return: email
+        """
         email = self.cleaned_data.get('email')
         if User.objects.filter(email=email).exists():
             raise ValidationError("Cette email est déjà utilisé")
         return email
 
     def clean_re_email(self):
+        """
+        Check if re_email is the same than email
+        :return: re_email
+        """
         re_email = self.cleaned_data.get('re_email')
         email = self.cleaned_data.get('email')
         if email != re_email:
@@ -96,6 +108,10 @@ class AssociationForm(ModelForm):
         return re_email
 
     def clean_password(self):
+        """
+        Check if password respect rules
+        :return: password
+        """
         password = self.cleaned_data.get('password')
         special_characters = ['@', '-', '/', '%', '$', '*', '&', '#']
         if len(password) < 8:
@@ -118,6 +134,10 @@ class AssociationForm(ModelForm):
             return password
 
     def clean_re_password(self):
+        """
+        Check if re_password is the same than password
+        :return: re_password
+        """
         re_password = self.cleaned_data.get('re_password')
         password = self.cleaned_data.get('password')
         if password != re_password:
@@ -164,12 +184,20 @@ class MemberForm(ModelForm):
 
     # Check if email is not used
     def clean_email(self):
+        """
+       Check if Email is not already used
+       :return: email
+       """
         email = self.cleaned_data.get('email')
         if User.objects.filter(email=email).exists():
             raise ValidationError("Cette email est déjà utilisé")
         return email
 
     def clean_re_email(self):
+        """
+        Check if re_email is the same than email
+        :return: re_email
+        """
         re_email = self.cleaned_data.get('re_email')
         email = self.cleaned_data.get('email')
         if email != re_email:
@@ -177,6 +205,10 @@ class MemberForm(ModelForm):
         return re_email
 
     def clean_password(self):
+        """
+        Check if password respect rules
+        :return: password
+        """
         password = self.cleaned_data.get('password')
         special_characters = ['@', '-', '/', '%', '$', '*', '&', '#']
         if len(password) < 8:
@@ -199,6 +231,10 @@ class MemberForm(ModelForm):
             return password
 
     def clean_re_password(self):
+        """
+        Check if re_password is the same than password
+        :return: re_password
+        """
         re_password = self.cleaned_data.get('re_password')
         password = self.cleaned_data.get('password')
         if password != re_password:

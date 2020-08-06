@@ -17,6 +17,10 @@ def search_asso(request):
 
 
 def search_by_country(request):
+    """
+    :param request: Get user's input
+    :return: List of Association filter by country
+    """
     country = str(request.POST.get('search_country')).lower()
     country_db = Address.objects.filter(country=country).values('id')
     user_id = CustomUser.objects.filter(address_id__in=country_db).values('association_id')
@@ -28,6 +32,10 @@ def search_by_country(request):
 
 
 def search_by_city(request):
+    """
+    :param request: Get user's input
+    :return: List of Association filter by city
+    """
     city = str(request.POST.get('search_city')).lower()
     country_db = Address.objects.filter(city=city).values('id')
     user_id = CustomUser.objects.filter(address_id__in=country_db).values(
@@ -40,6 +48,10 @@ def search_by_city(request):
 
 
 def search_by_name(request):
+    """
+    :param request: Get user's input
+    :return: List of Association filter by name
+    """
     name_filter = str(request.POST.get('search_name')).lower()
     association_filter = Association.objects.filter(
         name__contains=name_filter).values()
@@ -59,6 +71,11 @@ def home_asso(request, association_id):
 
 @csrf_exempt
 def make_donation(request, association_id):
+    """
+    :param request: Button donation
+    :param association_id: Association chosen by user
+    :return: Form to purchase the donation
+    """
     association = Association.objects.filter(id=association_id).values()
     form = DonorForm(request.POST or None)
     if form.is_valid():
@@ -86,6 +103,13 @@ def make_donation(request, association_id):
 
 
 def validate_donation(request, email, association_id, amount):
+    """
+    :param request: Validate DonorForm button
+    :param email: email given by the user
+    :param association_id: Association chosen by the user
+    :param amount: Amount chosen by the user
+    :return: confirmation donation
+    """
     donor = Donor.objects.get(email=email)
     asso = Association.objects.get(id=association_id)
     donation = Donation.objects.create(amount=amount, donor_id=donor,

@@ -96,6 +96,10 @@ def member_registration(request):
 
 @csrf_exempt
 def association_registration(request):
+    """
+    :param request: Association Forms
+    :return: Create address, association, user and custom_user if form is valid
+    """
     form = AssociationForm(request.POST or None, error_class=ParagraphErrorList)
     if form.is_valid():
         name = form.cleaned_data['name'].lower()
@@ -130,13 +134,17 @@ def association_registration(request):
 
 
 def welcome_association(request):
+    """
+    :param request: None
+    :return: Welcome page
+    """
     return render(request, 'association/welcome_association.html', locals())
 
 
 def show_information(request):
     """
-    :param:
-    :return:
+    :param: user instance
+    :return: Address and Association in information page
     """
     user_id = request.user.id
     user_asso = User.objects.filter(pk=user_id)
@@ -152,11 +160,12 @@ def show_information(request):
 
 def show_association(request):
     """
-    :param:
-    :return:
+    :param: user instance
+    :return: Association in association page
     """
     user_id = request.user.id
-    info_asso = CustomUser.objects.filter(user_id=user_id).values('association_id')
+    info_asso = CustomUser.objects.filter(
+        user_id=user_id).values('association_id')
     asso_id = [v['association_id'] for v in info_asso]
     my_association = Association.objects.filter(id=asso_id[0])
     context = {
@@ -167,6 +176,10 @@ def show_association(request):
 
 @csrf_exempt
 def asso_upload_view(request):
+    """
+    :param request: user instance
+    :return: update informations in Association model
+    """
     """Process images uploaded by users"""
     user_id = request.user.id
     info_asso = CustomUser.objects.filter(user_id=user_id).values(

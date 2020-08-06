@@ -96,7 +96,7 @@ header.masthead-home a {
 }
 
 .login-section {
-  padding: 20vh;
+  padding-left: 20vh;
   display: flex;
   background: url("../img/jungle.jpg");
   background-position: center;
@@ -118,8 +118,9 @@ header.masthead-home a {
     font-size: 1.5vw;
 }
 
-.login-section a{
+.login-section a,.nav-link{
     font-size: 1.5vw;
+    padding-left: 0px;
 }
 
 .Radio {
@@ -384,4 +385,5 @@ header.masthead-home-asso {
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
   }
+
 

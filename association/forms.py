@@ -24,6 +24,9 @@ class DonorForm(ModelForm):
 
     # Check if email is not used
     def clean_email(self):
+        """
+        :return: email if it's not already used
+        """
         email = self.cleaned_data.get('email')
         if Donor.objects.filter(email=email).exists():
             raise ValidationError("Cette email est déjà utilisé")
