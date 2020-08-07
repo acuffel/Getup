@@ -25,7 +25,7 @@ SECRET_KEY = '#+4e1k3k#o()a5&gieogc4c11p8*u70zk434hs4*cpnuzba_i-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['164.90.189.23']
 
 
 # Application definition
@@ -85,14 +85,15 @@ WSGI_APPLICATION = 'getup_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'getup',
-        'USER': 'acuffel',
-        'PASSWORD': '',
-        'HOST': '',
+        'USER': 'alex',
+        'PASSWORD': 'alexandre',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -132,6 +133,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 INTERNAL_IPS = ['127.0.0.1']
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
