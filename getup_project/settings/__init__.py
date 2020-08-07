@@ -85,11 +85,11 @@ WSGI_APPLICATION = 'getup_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'getup',
-        'USER': 'alex',
-        'PASSWORD': 'alexandre',
-        'HOST': 'localhost',
+        'USER': 'acuffel',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '5432',
     }
 }
