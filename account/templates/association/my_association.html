@@ -20,7 +20,7 @@
 <section class="account-infos">
     <div class="container h-100">
         <div class="row mt-1 mb-4">
-            <div class="col-3">
+            <div class="col-md-3 col-5">
                 <ul class="list-group">
                   <a href="{% url 'account:show_information' %}" class="list-group-item list-group-item-action">
                       MES INFOS </a>
@@ -37,13 +37,13 @@
                 </ul>
                 </div>
 
-        <div class="col-8 offset-1 ">
+        <div class="col-md-8 offset-md-1 col-7">
             {% for association in my_association %}
             <h3 class="justify">{{association.name}}</h3>
 
             <div class="row mt-3">
                 <div class="col-5">
-                <img src="{{ association.picture.url }}" style="width: 7em; height:7em;">
+                <img src="{{ association.picture.url }}" style="width: 10vw; height:10vw;">
                 </div>
 
             </div>

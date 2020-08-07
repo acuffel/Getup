@@ -53,12 +53,6 @@ header.masthead-home p {
 }
 
 
-header.masthead-home a {
-  font-size: 2vw;
-  height: auto;
-  width: auto;
-}
-
 @media screen and (max-width: 640px)
     {
         header.masthead-home hr {
@@ -67,6 +61,17 @@ header.masthead-home a {
         header.masthead-home {
               padding-bottom: 0px;
         }
+        header.masthead-home a {
+          font-size: 1.25vh;
+          height: 5px;
+          width: 20px;
+        }
+        .homepage-section p{
+            font-size: 2vh;
+        }
+        #know-more-about-us {
+            font-size: 1.5vh;
+        }
     }
 
 
@@ -74,11 +79,6 @@ header.masthead-home a {
     font-family: "PoppinsBold", sans-serif;
     font-size: 3vw;
 }
-
-.homepage-section p,button{
-    font-size: 2vw;
-}
-
 
 
 #about-us {
@@ -93,9 +93,6 @@ header.masthead-home a {
     list-style-type: none;
 }
 
-#know-more-about-us {
-    font-size: small;
-}
 
 #list-nav a:hover {
   border-bottom: 3px solid red;
@@ -103,32 +100,39 @@ header.masthead-home a {
 
 .login-section {
   padding-left: 20vh;
-  display: flex;
+  padding-top: 20vh;
   background: url("../img/jungle.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
-  height: 600px;
+  height: 1000px;
   }
 
+@media screen and (max-width: 640px)
+    {
+        .login-section {
+        height: 640px;
+        padding-left: 10vh;
+        padding-top: 10vh;
+        }
+        .login-section h3{
+        font-size: 2vh;
+        }
 
-.login-section h3{
-    font-size: 2.5vw;
-}
+        .login-section p{
+            font-size: 1.5vh;
+        }
 
-.login-section p{
-    font-size: 1.5vw;
-}
+        .login-section input{
+            font-size: 1.5vh;
+        }
 
-.login-section input{
-    font-size: 1.5vw;
-}
-
-.login-section a,.nav-link{
-    font-size: 1.5vw;
-    padding-left: 0px;
-}
+        .login-section a,.nav-link{
+            font-size: 1.5vh;
+            padding-left: 0px;
+        }
+            }
 
 .Radio {
   margin: 0 0.5rem 0;
@@ -147,10 +151,54 @@ header.masthead-home a {
 
   background: url("../img/wolf.jpg");
   background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+   background-repeat: no-repeat;
+   background-position: center;
 
   }
+
+@media screen and (max-width: 640px)
+    {
+        .registration-back {
+            height: 750px;
+        }
+        .registration-section h3{
+            font-size: 3vh;
+        }
+
+        .registration-section p, input{
+            font-size: 2vh;
+        }
+
+        .registration-back hr{
+            display: none;
+        }
+
+        .member-section p, input{
+            font-size: 1.5vh;
+
+        }
+
+        .account-home a{
+            font-size: 2vh;
+            height: 40px;
+        }
+
+        .account-infos a, li, .btn, p{
+            font-size: 1.5vh;
+        }
+
+        .account-infos h3{
+            font-size: 3vh;
+        }
+
+        .account-infos h5{
+            font-size: 2vh;
+        }
+
+    }
+
+
+
 
 header.masthead-search-asso {
     background: url("../img/shoalfish.jpg");
@@ -164,35 +212,26 @@ header.masthead-search-asso {
 @media screen and (max-width: 640px)
     {
         header.masthead-search-asso #search-title{
-        font-size: 2.5vh;
+            font-size: 2.5vh;
+        }
+        header.masthead-search-asso h4{
+            font-size: 2.5vh;
+        }
+
+        header.masthead-search-asso input{
+            font-size: 1.25vh;
+       }
+       .search-asso p{
+            font-size: 1.5vh;
         }
     }
 
-header.masthead-search-asso h4{
-    font-size: 2.5vw;
-}
 
-header.masthead-search-asso input{
-    font-size: 1.25vw;
-   }
-
-
-
-.search-asso input{
-    font-size: 1.25vw;
-}
-
-#payment-button{
-    font-size: 1.25vw;
-}
 
 #back-home{
     font-size: 1.25vw;
 }
 
-.search-asso p{
-    font-size: 1.5vw;
-}
 
 #contact-button{
     font-size: 1.5vw;

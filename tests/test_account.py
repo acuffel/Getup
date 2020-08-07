@@ -275,9 +275,11 @@ class AccountViewsTestCase(TestCase):
             'username': "alex@gmail.com",
             'password': "Password123!",
         }
+        user_type = ['AS']
         response = self.client.get(reverse('account:login'),
-                                            {'context': data})
-        self.assertTrue(response.status_code, 302)
+                                            {'context': data,
+                                             'user_type': user_type})
+        self.assertTrue(response.status_code, 200)
 
     def test_logout(self):
         """

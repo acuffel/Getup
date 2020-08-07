@@ -24,7 +24,7 @@ class ParagraphErrorList(ErrorList):
 class LoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(
         attrs={'size': 20, 'placeholder': 'Email'}), label='')
-    password = forms.CharField(widget=forms.TextInput(
+    password = forms.CharField(widget=forms.PasswordInput(
         attrs={'size': 20, 'placeholder': 'Mot de passe'}), label='')
 
     class Meta:
@@ -53,27 +53,27 @@ class AssociationForm(ModelForm):
     street = forms.CharField(widget=forms.TextInput(attrs={'size': 50}))
     zip_code = forms.IntegerField(
         widget=forms.TextInput(
-            attrs={'size': 15, 'placeholder': 'Code Postal'}))
+            attrs={'size': 13, 'placeholder': 'Code Postal'}))
     city = forms.CharField(
         widget=forms.TextInput(
-            attrs={'size': 15, 'placeholder': 'Ville'}))
+            attrs={'size': 13, 'placeholder': 'Ville'}))
     country = forms.CharField(
-        widget=forms.TextInput(attrs={'size': 15, 'placeholder': 'Pays'}))
+        widget=forms.TextInput(attrs={'size': 13, 'placeholder': 'Pays'}))
     first_name = forms.CharField(
-        widget=forms.TextInput(attrs={'size': 25, 'placeholder': 'Prénom'}))
+        widget=forms.TextInput(attrs={'size': 20, 'placeholder': 'Prénom'}))
     last_name = forms.CharField(
-        widget=forms.TextInput(attrs={'size': 25, 'placeholder': 'Nom'}))
+        widget=forms.TextInput(attrs={'size': 20, 'placeholder': 'Nom'}))
     email = forms.CharField(
-        widget=forms.TextInput(attrs={'size': 25, 'placeholder': 'Email'}))
+        widget=forms.TextInput(attrs={'size': 20, 'placeholder': 'Email'}))
     re_email = forms.CharField(
         widget=forms.TextInput(
-            attrs={'size': 25, 'placeholder': 'Confirmez votre email'}))
+            attrs={'size': 20, 'placeholder': 'Confirmez votre email'}))
     password = forms.CharField(
-        widget=forms.TextInput(
-            attrs={'size': 25, 'placeholder': 'Mot de passe'}))
+        widget=forms.PasswordInput(
+            attrs={'size': 20, 'placeholder': 'Mot de passe'}))
     re_password = forms.CharField(
-        widget=forms.TextInput(
-            attrs={'size': 25, 'placeholder': 'Confirmez votre mot de passe'}))
+        widget=forms.PasswordInput(
+            attrs={'size': 20, 'placeholder': 'Confirmez votre mot de passe'}))
 
     class Meta:
         model = CustomUser
@@ -149,7 +149,7 @@ class UploadAssociation(ModelForm):
     picture = forms.ImageField()
     description = forms.TextInput()
     category = forms.CharField(widget=forms.TextInput(
-        attrs={'size': 50}))
+        attrs={'size': 30}))
 
     class Meta:
         model = Association

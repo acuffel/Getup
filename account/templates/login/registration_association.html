@@ -58,11 +58,11 @@
 <section class="association-section" id="association-register">
     <div class="container h-100 mt-4 pt-4" >
         <div class="row" style="color: white;">
-            <div class="offset-1 col-6" style="border-radius: 50px; border: 2px solid black;">
+            <div class="offset-1 col-11 col-md-6" style="border-radius: 50px; border: 2px solid black;">
 
         <form action="{% url 'account:association_registration' %}" method="post" style="color: white;">
             {% csrf_token %}
-            <div class="row mt-2">
+            <div class="row mt-md-3 mt-3">
                 <div class="offset-1 col-10">
                     <p> Nom de l'association </p>
                 </div>
