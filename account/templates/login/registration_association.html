@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Get Up 4 Animals</title>
@@ -29,11 +29,11 @@
         <div class="row align-items-center justify-content-center text-center mt-2 pt-5">
             <div class="offset-1 col-10">
                 <h3> Je m'inscris </h3>
-                <p> Merci de nous en dire un peu plus sur vous </p>
+                <p> Merci de nous en dire un peu plus sur votre association </p>
                  </div>
         </div>
-        <div class="row align-items-left">
-            <div class="offset-5">
+        <div class="row align-items-left" style="display: none;">
+            <div class="offset-3">
                 <div class="radio">
                     <label>
                         <input type="radio" onclick="window.location='{% url 'account:member_registration' %}';" /> Je suis un particulier
@@ -47,6 +47,7 @@
             </div>
         </div>
 
+
     </div>
 
 
@@ -56,78 +57,78 @@
 
 
 <section class="association-section" id="association-register">
-    <div class="container h-100 mt-4 pt-4" >
-        <div class="row" style="color: white;">
-            <div class="offset-1 col-11 col-md-6" style="border-radius: 50px; border: 2px solid black;">
+    <div class="container" >
+        <div class="row mt-4 pt-4" style="color: white;">
+            <div class="col-md-6 col-10" style="border-radius: 50px; border: 2px solid black;">
 
         <form action="{% url 'account:association_registration' %}" method="post" style="color: white;">
             {% csrf_token %}
             <div class="row mt-md-3 mt-3">
-                <div class="offset-1 col-10">
+                <div class="col">
                     <p> Nom de l'association </p>
                 </div>
             </div>
             <div class="row mt-1">
-                <div class="offset-1 col-10">
+                <div class="col">
                     <p>
                     {{ form.name }}
                     </p>
                 </div>
             </div>
             <div class="row mt-2">
-                <div class="offset-1 col-10">
+                <div class="col">
                     <p> Adresse de l'association </p>
                 </div>
             </div>
             <div class="row mt-1">
-                <div class="offset-1 col-10">
+                <div class="col">
                     {{ form.street }}
                 </div>
             </div>
             <div class="row mt-1">
-                <div class="offset-1 col-2">
+                <div class="col">
                     {{ form.zip_code }}
                 </div>
-                <div class="offset-1 col-2">
+                <div class="col">
                     {{ form.city }}
                 </div>
-                <div class="offset-1 col-2">
+                <div class="col">
                     {{ form.country }}
                 </div>
             </div>
             <div class="row mt-2">
-                <div class="offset-1 col-10">
+                <div class="col">
                     <p> Administrateur de l'association </p>
                 </div>
             </div>
             <div class="row mt-1">
-                <div class="offset-1 col-4">
+                <div class="col">
                     {{ form.first_name }}
                 </div>
-                <div class="offset-1 col-4">
+                <div class="col">
                     {{ form.last_name }}
                 </div>
             </div>
             <div class="row mt-1">
-                <div class="offset-1 col-4">
+                <div class="col">
                     {{ form.email }}
                 </div>
-                <div class="offset-1 col-4">
+                <div class="col">
                     {{ form.re_email }}
                 </div>
             </div>
             <div class="row mt-1">
-                <div class="offset-1 col-4">
+                <div class="col">
                     {{ form.password }}
                 </div>
-                <div class="offset-1 col-4">
+                <div class="col">
                     {{ form.re_password }}
                 </div>
                 {{ form.errors }}
             </div>
 
             <div class="row mt-3 mb-3">
-                <div class="offset-3 col-6">
+                <div class="col">
             <input type="submit" value="Je valide mon inscription" style="width: 100%;"class="btn btn-success btn-sm"/>
                 </div>
             </div>
@@ -139,7 +140,7 @@
 </section>
 
 <div class="row mt-4">
-    <div class="offset-2">
+    <div class="col">
         <a class="nav-link" href="{% url 'home:home' %}" style="color: black; font-weight: bold;"> Retour au site </a>
     </div>
 

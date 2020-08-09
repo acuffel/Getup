@@ -49,8 +49,8 @@ class LoginForm(forms.Form):
 
 # Create AssociationForm
 class AssociationForm(ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'size': 50}))
-    street = forms.CharField(widget=forms.TextInput(attrs={'size': 50}))
+    name = forms.CharField(widget=forms.TextInput(attrs={'size': 30}))
+    street = forms.CharField(widget=forms.TextInput(attrs={'size': 30}))
     zip_code = forms.IntegerField(
         widget=forms.TextInput(
             attrs={'size': 13, 'placeholder': 'Code Postal'}))
@@ -147,7 +147,7 @@ class AssociationForm(ModelForm):
 
 class UploadAssociation(ModelForm):
     picture = forms.ImageField()
-    description = forms.TextInput()
+    description = forms.TextInput(attrs={'size': 30})
     category = forms.CharField(widget=forms.TextInput(
         attrs={'size': 30}))
 

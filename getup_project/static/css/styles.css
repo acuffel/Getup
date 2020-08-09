@@ -38,18 +38,12 @@ header.masthead-home {
   height: 100%;
 }
 header.masthead-home h1 {
-  font-size: 4vw;
   color: rgba(165,42,42, 0.8);
   font-family: "PoppinsBold", sans-serif;
 }
 
 header.masthead-home h3 {
-  font-size: 3.5vw;
   font-family: "PoppinsBold", sans-serif;
-}
-
-header.masthead-home p {
-  font-size: 2vw;
 }
 
 
@@ -61,23 +55,11 @@ header.masthead-home p {
         header.masthead-home {
               padding-bottom: 0px;
         }
-        header.masthead-home a {
-          font-size: 1.25vh;
-          height: 5px;
-          width: 20px;
-        }
-        .homepage-section p{
-            font-size: 2vh;
-        }
-        #know-more-about-us {
-            font-size: 1.5vh;
-        }
     }
 
 
 .homepage-section h3{
     font-family: "PoppinsBold", sans-serif;
-    font-size: 3vw;
 }
 
 
@@ -85,12 +67,15 @@ header.masthead-home p {
     font-family: "PoppinsLight", sans-serif;
 }
 
-#sticky-footer li{
-    font-size: 1vw;
-}
 
 #sticky-footer ul {
     list-style-type: none;
+    font-size: small;
+}
+
+#sticky-footer a {
+    color: white;
+    text-decoration: none;
 }
 
 
@@ -99,7 +84,7 @@ header.masthead-home p {
 }
 
 .login-section {
-  padding-left: 20vh;
+  padding-left: 10vh;
   padding-top: 20vh;
   background: url("../img/jungle.jpg");
   background-position: center;
@@ -109,30 +94,6 @@ header.masthead-home p {
   height: 1000px;
   }
 
-@media screen and (max-width: 640px)
-    {
-        .login-section {
-        height: 640px;
-        padding-left: 10vh;
-        padding-top: 10vh;
-        }
-        .login-section h3{
-        font-size: 2vh;
-        }
-
-        .login-section p{
-            font-size: 1.5vh;
-        }
-
-        .login-section input{
-            font-size: 1.5vh;
-        }
-
-        .login-section a,.nav-link{
-            font-size: 1.5vh;
-            padding-left: 0px;
-        }
-            }
 
 .Radio {
   margin: 0 0.5rem 0;
@@ -156,49 +117,6 @@ header.masthead-home p {
 
   }
 
-@media screen and (max-width: 640px)
-    {
-        .registration-back {
-            height: 750px;
-        }
-        .registration-section h3{
-            font-size: 3vh;
-        }
-
-        .registration-section p, input{
-            font-size: 2vh;
-        }
-
-        .registration-back hr{
-            display: none;
-        }
-
-        .member-section p, input{
-            font-size: 1.5vh;
-
-        }
-
-        .account-home a{
-            font-size: 2vh;
-            height: 40px;
-        }
-
-        .account-infos a, li, .btn, p{
-            font-size: 1.5vh;
-        }
-
-        .account-infos h3{
-            font-size: 3vh;
-        }
-
-        .account-infos h5{
-            font-size: 2vh;
-        }
-
-    }
-
-
-
 
 header.masthead-search-asso {
     background: url("../img/shoalfish.jpg");
@@ -208,23 +126,6 @@ header.masthead-search-asso {
     color: white;
     font-family: "PoppinsBold", sans-serif;
 }
-
-@media screen and (max-width: 640px)
-    {
-        header.masthead-search-asso #search-title{
-            font-size: 2.5vh;
-        }
-        header.masthead-search-asso h4{
-            font-size: 2.5vh;
-        }
-
-        header.masthead-search-asso input{
-            font-size: 1.25vh;
-       }
-       .search-asso p{
-            font-size: 1.5vh;
-        }
-    }
 
 
 
@@ -253,61 +154,6 @@ header.masthead-about {
   background-attachment: scroll;
   background-size: cover;
   color: white;
-  height: 100%;
-}
-
-header.masthead-about h2 {
-    font-size: 3vw;
-}
-
-header.masthead-about p{
-    font-size: 1.5vw;
-}
-
-header.masthead-about button {
-    font-size: 2vw;
-}
-
-#about-title a{
-    font-size: 2vw;
-}
-
-#asso-title a{
-    font-size: 2vw;
-}
-
-.about-section h4, h5 {
-    font-size: 2vw;
-}
-
-.about-section p {
-    font-size: 1.5vw;
-}
-
-.about-section img {
-    height: auto;
-    width: auto;
-}
-
-.about-commitment h4, h5 {
-    font-size: 2vw;
-}
-
-.about-commitment p {
-    font-size: 1.5vw;
-}
-
-.about-commitment img {
-    height: auto;
-    width: auto;
-}
-
-.about-values h4, h5 {
-    font-size: 2vw;
-}
-
-.about-values p {
-    font-size: 1.5vw;
 }
 
 @media screen and (max-width: 640px)
@@ -339,9 +185,6 @@ header.masthead-home-asso {
     width: 15vw;
 }
 
-.masthead-home-asso h2{
-    font-size: 3vw;
-}
 
 .masthead-home-asso a{
     height: auto;
@@ -370,16 +213,22 @@ header.masthead-home-asso {
     box-shadow: 1px 1px 1px 1px #888888;
 }
 
+@media screen and (max-width: 640px)
+    {
+        .result-view{
+        height: 50px;
+        }
+        #description-asso{
+        display: none;
+        }
+        .search-asso img{
+            height: 50px;
+            width: 50px;
+            padding-left: 5px;
+            }
+    }
 
-.border-asso {
 
-    border-radius: 10px;
-    border: 0.5px solid grey;
-    text-align: center;
-    box-shadow: 1px 1px 1px 1px #888888;
-    width:15vw;
-    height:4vw;
-}
 
 .border-gift {
 

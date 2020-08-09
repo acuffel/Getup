@@ -20,47 +20,47 @@
 <section class="account-infos">
     <div class="container h-100">
         <div class="row mt-1 mb-4">
-            <div class="col-md-3 col-5">
+            <div class="col-md-3 col-6">
                 <ul class="list-group">
                   <a href="{% url 'account:show_information' %}" class="list-group-item list-group-item-action">
                       MES INFOS </a>
                   <a href="{% url 'account:show_association' %}" class="list-group-item list-group-item-action">
                       MON ASSOCIATION</a>
-                  <a href="#" class="list-group-item list-group-item-action">
+                  <a href="#" class="list-group-item list-group-item-action" style="display:none;">
                       MES DONS</a>
-                  <a href="#" class="list-group-item list-group-item-action">
+                  <a href="#" class="list-group-item list-group-item-action" style="display:none;">
                       MES COLLECTES</a>
-                  <a href="#" class="list-group-item list-group-item-action">
+                  <a href="#" class="list-group-item list-group-item-action" style="display:none;">
                       BESOIN D'AIDE ?</a>
                     <a href="{% url 'account:logout' %}" class="list-group-item list-group-item-action">
                         SE DECONNECTER</a>
                 </ul>
                 </div>
 
-        <div class="col-md-8 offset-md-1 col-7">
+        <div class="col-6">
             {% for association in my_association %}
-            <h3 class="justify">{{association.name}}</h3>
+            <h4 class="justify">{{association.name}}</h4>
 
             <div class="row mt-3">
-                <div class="col-5">
+                <div class="col">
                 <img src="{{ association.picture.url }}" style="width: 10vw; height:10vw;">
                 </div>
 
             </div>
             <div class="row mt-4">
-                <div class="col-12">
-                <h5 style="font-weight: bold;"> Description de l'asso </h5>
-                    <p> {{association.description}}</p>
+                <div class="col">
+                <h4 style="font-weight: bold;"> Description de l'asso </h4>
+                    <p><small> {{association.description}}</small></p>
                     </div>
             </div>
             <div class="row">
-                 <div class="col-12">
-                <h5 p style="font-weight: bold;"> Les catégories </h5>
+                 <div class="col">
+                <h4 style="font-weight: bold;"> Les catégories </h4>
                      <p> {{association.category}} </p>
                  </div>
             </div>
             <div class="row mt-3">
-                <div class="col-12">
+                <div class="col">
                     <a href="{% url 'account:update_asso' %}">
                 <input type="button" value="Modifier les informations" class="btn btn-success btn-sm" />
                     </a>

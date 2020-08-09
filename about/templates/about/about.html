@@ -5,41 +5,42 @@
 
 <header class="masthead-about">
     <div class="container h-80">
-        <div class="row text-align" style="padding-top: 10vw;">
-            <div class="offset-7">
-                <h2 class="text-uppercase">GET UP FOR ANIMALS</h2>
+
+            <div class="row" style="padding-top: 10vw;">
+                <div class="col offset-md-7">
+                    <h2 class="text-uppercase">GET UP FOR ANIMALS</h2>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="offset-7 d-flex justify-content-end">
-                <p>Nous sommes une équipe engagée à promouvoir et soutenir les associations de protection animale et de leur environnement dans leurs missions</p>
+            <div class="row">
+                <div class="col offset-md-7">
+                    <p>Nous sommes une équipe engagée à promouvoir et soutenir les associations de protection animale et de leur environnement dans leurs missions</p>
+                </div>
             </div>
-        </div>
-        <div class="row" style="padding-top: 2vw;">
-            <div class="offset-7">
-                <button type="button" class="btn btn-outline-dark" id="home-donation">
-                    Watch the vidéo
-                </button>
+            <div class="row" style="padding-top: 2vw; display:none;">
+                <div class="col offset-md-7">
+                    <button type="button" class="btn btn-outline-dark" id="home-donation">
+                        Watch the vidéo
+                    </button>
+                </div>
             </div>
-        </div>
 
     </div>
 </header>
 
 
-<div class="container" id="about-title">
+<div class="container" id="about-title" style="display:none;">
     <div class="row pt-2">
-        <div class="offset-1 col-2">
+        <div class="col">
             <a href="#vision" class="badge badge-light">
                 QUI SOMME NOUS
             </a>
         </div>
-        <div class="offset-1 col-2">
+        <div class="col">
             <a href="#mission" class="badge badge-light">
                 QUE FAISONS NOUS
             </a>
         </div>
-        <div class="offset-1 col-2">
+        <div class="col">
             <a href="#commitment" class="badge badge-light">
                 COMMENT CA MARCHE
             </a>
@@ -51,16 +52,16 @@
 </div>
 
 <section class="about-section" id="vision">
-    <div class="container h-40 pt-3">
-        <div class="row">
-            <div class="offset-1 col-3">
+    <div class="container">
+        <div class="row h-40 pt-3">
+            <div class="col">
                 <img src="{% static 'img/sun.jpg' %}" alt="Bootstrap" class="img-thumbnail">
                 </div>
-            <div class="col-4 ">
+            <div class="col">
                 <h4 class="mb-3 align-items-center text-center"> NOTRE VISION </h4>
                 <p class="d-flex justify-content"> Nous croyons en un monde meilleur dans lequel les individus s’engagent et s’unissent pour soutenir le travail des associations de protection animale afin de faire respecter les droits des animaux </p>
             </div>
-            <div class="col-3">
+            <div class="col">
                 <img src="{% static 'img/sheep.jpg' %}" alt="Bootstrap" class="img-thumbnail">
                 </div>
         </div>
@@ -68,12 +69,12 @@
 </section>
 
 <section class="about-section" id="mission">
-    <div class="container h-40 pt-3 mt-5">
-        <div class="row">
-            <div class="offset-1 col-4">
+    <div class="container">
+        <div class="row pt-3 mt-5" >
+            <div class="col">
                 <img src="{% static 'img/world.jpg' %}" alt="Bootstrap" class="img-thumbnail">
             </div>
-            <div class="offset-1 col-5 ">
+            <div class="col ">
                 <h4 class="mb-3 align-items-center text-center"> NOTRE MISSION </h4>
 
                 <h5 class="d-flex justify-content-start"> Nous valorisons </h5>
@@ -90,7 +91,7 @@
 <section class="about-commitment" id="commitment">
     <div class="container h-40 pt-3 mt-5">
         <div class="row">
-            <div class="offset-1 col-4">
+            <div class="col">
                 <h4 class="mb-3 align-items-center text-center"> NOTRE ENGAGEMENT </h4>
 
                 <h5 class="d-flex justify-content-start"> Get up for animals s’engage à: </h5>
@@ -100,7 +101,7 @@
 
             </div>
 
-            <div class="offset-1 col-5 ">
+            <div class="col">
                 <img src="{% static 'img/vision.jpg' %}" alt="Bootstrap" class="img-thumbnail">
                   </div>
         </div>
@@ -113,28 +114,28 @@
             <h4 class="mb-5 "> NOS VALEURS </h4>
         </div>
         <div class="row">
-            <div class="col-3">
+            <div class="col">
                 <div class="text-center mb-2">
                     <i class="far fa-heart fa-3x" id="passion"></i>
                 </div>
                 <h5 class="text-center"> Passion </h5>
                 <p> Nous agissons par amour pour les animaux. Sans cette passion, l’aventure Get Up For Animals n’aurait pas été possible </p>
             </div>
-            <div class="col-3">
+            <div class="col">
                 <div class="text-center mb-2">
                     <i class="fas fa-hands-helping fa-3x" id="solidarity"></i>
                 </div>
                 <h5 class="text-center"> Solidarité </h5>
                 <p> Nous avons énormément de respect et d’admiration pour le travail réalisé par les associations; notre but est de les soutenir pour leur permettre d’accroître leurs moyens d’agir sur le terrain </p>
             </div>
-            <div class="col-3">
+            <div class="col">
                 <div class="text-center mb-2">
                     <i class="far fa-star fa-3x" id="engagement"></i>
                 </div>
                 <h5 class="text-center"> Engagement </h5>
                 <p> Nous sommes engagés à créer une collaboration positiveet durable avec les associations pour le bien-être des animaux </p>
             </div>
-            <div class="col-3">
+            <div class="col">
                 <div class="text-center mb-2">
                     <i class="fas fa-balance-scale-right fa-3x" id="integrity"></i>
                 </div>
@@ -145,7 +146,7 @@
     </div>
 </section>
 
-<section class="about-team" id="team">
+<section class="about-team" id="team" style="display:none;">
     <div class="container h-40 pt-3">
         <div class="row align-items-center justify-content-center text-center">
             <h4 class="mb-5 "> NOTRE EQUIPE </h4>

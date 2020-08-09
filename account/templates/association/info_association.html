@@ -20,27 +20,27 @@
 <section class="account-infos">
     <div class="container h-100">
         <div class="row mt-1 mb-4">
-            <div class="col-md-3 col-5">
+            <div class="col-md-3 col-6">
                 <ul class="list-group">
                   <a href="{% url 'account:show_information' %}" class="list-group-item list-group-item-action">
                       MES INFOS </a>
                   <a href="{% url 'account:show_association' %}" class="list-group-item list-group-item-action">
                       MON ASSOCIATION</a>
-                  <a href="#" class="list-group-item list-group-item-action">
+                  <a href="#" class="list-group-item list-group-item-action" style="display:none;">
                       MES DONS</a>
-                  <a href="#" class="list-group-item list-group-item-action">
+                  <a href="#" class="list-group-item list-group-item-action" style="display:none;">
                       MES COLLECTES</a>
-                  <a href="#" class="list-group-item list-group-item-action">
+                  <a href="#" class="list-group-item list-group-item-action" style="display:none;">
                       BESOIN D'AIDE ?</a>
                     <a href="{% url 'account:logout' %}" class="list-group-item list-group-item-action">
                         SE DECONNECTER</a>
                 </ul>
                 </div>
 
-        <div class="col-md-8 col-6 offset-1 ">
+        <div class="col ">
             <h3 class="justify">MES INFOS </h3>
             <div class="row mt-3">
-                <div class="col-5">
+                <div class="col">
                     <ul style="list-style:none; padding:0;">
                         {% for user in user_asso %}
                         <li>{{user.first_name}} {{user.last_name}}</li>
@@ -48,7 +48,7 @@
                         {% endfor %}
                     </ul>
                 </div>
-                <div class="offset-1 col-5">
+                <div class="col">
                     <ul style="list-style:none; padding:0;">
                     {% for address in address_asso %}
                         <li>{{address.street}}</li>
@@ -58,8 +58,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col-12">
+            <div class="row mt-3" style="display:none;">
+                <div class="col">
                 <input type="submit" value="Modifier les informations" class="btn btn-success btn-sm"/>
                     </div>
             </div>

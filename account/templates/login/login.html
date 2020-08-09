@@ -26,13 +26,13 @@
 <section class="login-section" id="login">
 
     <div class="container">
-        <div class="row d-flex justify-content-start pt-5">
-            <div class="offset-1">
+        <div class="row d-flex pt-5">
+            <div class="col">
                 <h3 style="color: white;"> Je me connecte </h3>
                     <form action="{% url 'account:login' %}" method="post" id="login-form">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <input type="submit" value="OK" style="width: 68%;"class="btn btn-success btn-sm"/>
+                        <input type="submit" value="OK" class="btn btn-success btn-sm"/>
                     </form>
                     {% if error %}
                         <p><strong style="color: white;">Utilisateur inconnu ou mauvais de mot de passe.</strong></p>
@@ -40,12 +40,12 @@
             </div>
         </div>
         <div class="row text-left mt-4">
-            <div class="offset-1">
-                <a class="nav-link" style="color: white; font-weight: bold;" href="{% url 'account:member_registration' %}"> Je créé un compte </a>
+            <div class="col">
+                <a class="nav-link" style="color: white; font-weight: bold;" href="{% url 'account:association_registration' %}"> Je créé un compte </a>
             </div>
         </div>
         <div class="row text-left mt-4">
-            <div class="offset-1">
+            <div class="col">
                 <a class="nav-link" href="{% url 'home:home' %}" style="color: white;"><small>Retour au site </small></a>
             </div>
         </div>

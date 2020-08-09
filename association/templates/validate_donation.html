@@ -6,14 +6,14 @@
 {% for asso in association %}
 
 <header class="masthead-home-asso">
-    <div class="container h-80">
+    <div class="container">
         <div class="row">
 
-            <div class="col-3 pt-4">
+            <div class="col pt-4" >
                 <img src="{{MEDIA_URL}}{{ asso.picture }}" style="border-radius: 5%;">
             </div>
-            <div class="offset-1 col-5 pt-4">
-                <h2 class="text-uppercase">{{ asso.name }}</h2>
+            <div class="col pt-4">
+                <h3 class="text-uppercase">{{ asso.name }}</h3>
             </div>
         </div>
     </div>
@@ -23,11 +23,11 @@
 
 
 <section class="search-asso">
-    <div class="container h-40 pt-3">
-        <div class="row mb-4">
+    <div class="container">
+        <div class="row mb-4 pt-3 text-center">
 
-            <div class="col-6 offset-3">
-                <h5 class="border-asso"> Ma Donation</h5>
+            <div class="col">
+                <h3> Ma Donation</h3>
 
                 <p class="pt-4">Votre don de {{ amount }} € a été confirmé</p>
 

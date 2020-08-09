@@ -20,17 +20,17 @@
 <section class="account-infos">
     <div class="container h-100">
         <div class="row mt-1 mb-4">
-            <div class="col-md-3 col-5">
+            <div class="col-md-3 col-6">
                 <ul class="list-group">
                   <a href="{% url 'account:show_information' %}" class="list-group-item list-group-item-action">
                       MES INFOS </a>
                   <a href="{% url 'account:show_association' %}" class="list-group-item list-group-item-action">
                       MON ASSOCIATION</a>
-                  <a href="#" class="list-group-item list-group-item-action">
+                  <a href="#" class="list-group-item list-group-item-action" style="display:none;">
                       MES DONS</a>
-                  <a href="#" class="list-group-item list-group-item-action">
+                  <a href="#" class="list-group-item list-group-item-action" style="display:none;">
                       MES COLLECTES</a>
-                  <a href="#" class="list-group-item list-group-item-action">
+                  <a href="#" class="list-group-item list-group-item-action" style="display:none;">
                       BESOIN D'AIDE ?</a>
                     <a href="{% url 'account:logout' %}" class="list-group-item list-group-item-action">
                         SE DECONNECTER</a>
@@ -38,20 +38,26 @@
             </div>
 
 
-        <div class="col-md-8 offset-md-1 col-7">
-            {% for asso in association %}
-            <h3 class="justify">{{asso.name}}</h3>
-            {% endfor %}
-            <div class="row mt-3">
-                <div class="col-5">
-                    <form action="{% url 'account:update_asso' %}" method="post" enctype="multipart/form-data">
-                          {% csrf_token %}
-                           {{ form.as_p }}
-                          <button type="submit">Upload</button>
-                    </form>
-                </div>
+            <div class="col-6 col-md-9">
+                {% for asso in association %}
+                <h3 class="justify">{{asso.name}}</h3>
+                {% endfor %}
+                <br action="{% url 'account:update_asso' %}" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <p> Logo :</p>
+                       {{ form.picture }}
+
+                    <p style="padding-top: 2vw;"> Description :</p>
+                       {{ form.description}}
+
+                    <p style="padding-top: 2vw;"> Catégories :</p>
+                       {{ form.category }}
+
+                    <p style="padding-top: 2vw;">
+                      <button type="submit">Upload</button>
+                    </p>
+                </form>
             </div>
-        </div>
         </div>
     </div>
 </section>
