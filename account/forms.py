@@ -240,3 +240,5 @@ class MemberForm(ModelForm):
         if password != re_password:
             raise ValidationError("Les Mots de passe ne correspondent pas")
         return re_password
+
+    print("hello")
