@@ -14,7 +14,7 @@ before_script:
 services:
   - postgresql
 
-env: DJANGO_SETTINGS_MODULE='bp_project.settings.travis'
+env: DJANGO_SETTINGS_MODULE='bp_project.settings'
 
 script:
   - ./manage.py test tests
