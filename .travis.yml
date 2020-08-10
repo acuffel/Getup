@@ -9,7 +9,6 @@ branches:
 
 before_script:
   - pip install -r requirements.txt
-  - python3 manage.py runserver &
 
 services:
   - postgresql
