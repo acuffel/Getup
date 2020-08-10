@@ -19,6 +19,10 @@ class Association(models.Model):
     description = models.TextField(null=True)
     creation_date = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=100, null=True)
+    mission = models.TextField(null=True)
+    action = models.TextField(null=True)
+    difficulty = models.TextField(null=True)
+    need = models.TextField(null=True)
 
     def __str__(self):
         return self.name
