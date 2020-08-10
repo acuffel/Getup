@@ -9,6 +9,7 @@ branches:
 
 before_script:
   - pip install -r requirements.txt
+  - python3 manage.py runserver &
 
 services:
   - postgresql
@@ -16,6 +17,4 @@ services:
 env: DJANGO_SETTINGS_MODULE='bp_project.settings.travis'
 
 script:
-  - python3 manage.py makemigrations
-  - python3 manage.py migrate
-  - python3 manage.py test tests
+  - ./manage.py test tests
