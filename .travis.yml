@@ -1,0 +1,21 @@
+language: python
+python:
+  - '3.7'
+
+# safelist
+branches:
+  only:
+      - staging
+
+before_script:
+  - pip install -r requirements.txt
+
+services:
+  - postgresql
+
+env: DJANGO_SETTINGS_MODULE='bp_project.settings.travis'
+
+script:
+  - python3 manage.py makemigrations
+  - python3 manage.py migrate
+  - python3 manage.py test tests
