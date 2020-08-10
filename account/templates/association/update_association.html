@@ -40,18 +40,27 @@
 
             <div class="col-6 col-md-9">
                 {% for asso in association %}
-                <h3 class="justify">{{asso.name}}</h3>
+                <h4 class="justify">{{asso.name}}</h4>
                 {% endfor %}
-                <br action="{% url 'account:update_asso' %}" method="post" enctype="multipart/form-data">
+                <form action="{% url 'account:update_asso' %}" method="post" enctype="multipart/form-data">
                       {% csrf_token %}
-                    <p> Logo :</p>
-                       {{ form.picture }}
+                    <p> Logo : {{ form.picture }} </p>
 
-                    <p style="padding-top: 2vw;"> Description :</p>
-                       {{ form.description}}
 
-                    <p style="padding-top: 2vw;"> Catégories :</p>
-                       {{ form.category }}
+                    <p style="padding-top: 2vw;"> Description : {{ form.description}} </p>
+
+
+                    <p style="padding-top: 2vw;"> Catégories : {{ form.category }} </p>
+
+                    <h4 style="padding-top: 2vw;">  Décrivez votre association </h4>
+
+                    <p style="padding-top: 2vw;"> Votre Mission : {{ form.mission }} </p>
+
+                    <p style="padding-top: 2vw;"> Vos Actions : {{ form.action }} </p>
+
+                    <p style="padding-top: 2vw;"> Vos Difficultés : {{ form.difficulty }} </p>
+
+                    <p style="padding-top: 2vw;"> Vos Besoins : {{ form.need }} </p>
 
                     <p style="padding-top: 2vw;">
                       <button type="submit">Upload</button>

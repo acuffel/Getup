@@ -193,6 +193,10 @@ def asso_upload_view(request):
         update_asso.picture = form.cleaned_data["picture"]
         update_asso.description = form.cleaned_data["description"]
         update_asso.category = form.cleaned_data["category"]
+        update_asso.mission = form.cleaned_data["mission"]
+        update_asso.action = form.cleaned_data["action"]
+        update_asso.difficulty = form.cleaned_data["difficulty"]
+        update_asso.need = form.cleaned_data["need"]
         update_asso.save()
         return render(request,
                       'association/welcome_association.html', locals())
@@ -201,5 +205,4 @@ def asso_upload_view(request):
             'form': form,
             'association': my_association,
         }
-        print("form not valid")
     return render(request, 'association/update_association.html', context)

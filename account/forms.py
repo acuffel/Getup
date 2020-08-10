@@ -147,13 +147,18 @@ class AssociationForm(ModelForm):
 
 class UploadAssociation(ModelForm):
     picture = forms.ImageField()
-    description = forms.TextInput(attrs={'size': 30})
+    description = forms.CharField(widget=forms.TextInput(attrs={'size': '30'}))
     category = forms.CharField(widget=forms.TextInput(
-        attrs={'size': 30}))
+        attrs={'size': '30'}))
+    mission = forms.CharField(widget=forms.TextInput(attrs={'size': '30'}))
+    action = forms.CharField(widget=forms.TextInput(attrs={'size': '30'}))
+    difficulty = forms.CharField(widget=forms.TextInput(attrs={'size': '30'}))
+    need = forms.CharField(widget=forms.TextInput(attrs={'size': '30'}))
 
     class Meta:
         model = Association
-        fields = ['picture', 'description', 'category']
+        fields = ['picture', 'description', 'category', 'mission', 'action',
+                  'difficulty', 'need']
 
 
 # Create MemberForm
@@ -240,5 +245,3 @@ class MemberForm(ModelForm):
         if password != re_password:
             raise ValidationError("Les Mots de passe ne correspondent pas")
         return re_password
-
-    print("hello")

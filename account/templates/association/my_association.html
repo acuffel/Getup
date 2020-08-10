@@ -49,14 +49,23 @@
             </div>
             <div class="row mt-4">
                 <div class="col">
-                <h4 style="font-weight: bold;"> Description de l'asso </h4>
+                <p><strong> Description de l'asso </strong></p>
                     <p><small> {{association.description}}</small></p>
                     </div>
             </div>
             <div class="row">
                  <div class="col">
-                <h4 style="font-weight: bold;"> Les catégories </h4>
-                     <p> {{association.category}} </p>
+                     <p><strong>Les catégories </strong></p>
+                     <p><small> {{association.category}} </small></p>
+                 </div>
+            </div>
+            <div class="row">
+                 <div class="col">
+                     <p><strong>Vos activités</strong></p>
+                     <p> Votre mission: <small>{{association.action}}</small></p>
+                     <p> Vos actions: <small>{{association.mission}}</small></p>
+                     <p> Vos difficultés: <small>{{association.difficulty}}</small></p>
+                     <p> Vos besoins: <small>{{association.need}}</small></p>
                  </div>
             </div>
             <div class="row mt-3">

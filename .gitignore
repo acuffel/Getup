@@ -8,3 +8,4 @@ geckodriver.log
 .coverage
 htmlcov/
 getup_project/settings/production.py
+media/
