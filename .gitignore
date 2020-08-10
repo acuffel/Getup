@@ -9,3 +9,4 @@ geckodriver.log
 htmlcov/
 getup_project/settings/production.py
 media/
+getup_project/staticfiles/
