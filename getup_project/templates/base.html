@@ -37,10 +37,10 @@
                             <a class="nav-link" href="{% url 'association:search_asso' %}">Associations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="display: none;">Evènements</a>
+                            <a class="nav-link" href="#">Evènements</a>
                          </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="display: none;">Faire un don</a>
+                            <a class="nav-link" href="#">Faire un don</a>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
@@ -94,8 +94,8 @@
                         <ul>
                             <li class="font-weight-bold">Découvrez Get Up 4 Animals</li>
                             <li > <a href="{% url 'about:about' %}"> Qui sommes-nous ? </a></li>
-                            <li style="display: none;">Le manifeste</li>
-                            <li style="display: none;">Nos engagements</li>
+                            <li>Le manifeste</li>
+                            <li>Nos engagements</li>
                         </ul>
                     </div>
                     <div class="col">
@@ -103,17 +103,17 @@
                             <li class="font-weight-bold">Agir</li>
                             <li> <a href="{% url 'account:login' %}"> Inscrire mon association </a></li>
                             <li> <a href="{% url 'association:search_asso' %}"> Faire un don </a></li>
-                            <li style="display: none;">Collectes spéciales et events</li>
+                            <li>Collectes spéciales et events</li>
                         </ul>
                     </div>
-                    <div class="col" style="display: none;">
+                    <div class="col">
                         <ul>
                             <li class="font-weight-bold" >Aide</li>
                             <li>FAQ</li>
                             <li>Centre d'aide</li>
                         </ul>
                     </div>
-                    <div class="col" style="display: none;">
+                    <div class="col">
                         <ul>
                             <li class="font-weight-bold">Infos légales</li>
                             <li>CGU Utilisateur</li>
