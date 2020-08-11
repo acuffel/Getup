@@ -18,7 +18,11 @@ class AccountModelTestCase(TestCase):
         association = Association.objects.create(name='MonAsso',
                                                  picture='asso.jpg',
                                                  description='Vive mon Asso',
-                                                 category='animaux')
+                                                 category='animaux',
+                                                 mission='mission',
+                                                 action='action',
+                                                 difficulty="difficultés",
+                                                 need='besoins')
         user = User.objects.create_user(username='alex@gmail.com',
                                         email='alex@gmail.com',
                                         password='Password123!',
@@ -81,6 +85,26 @@ class AccountFormTestCase(TestCase):
         form = LoginForm(data)
         self.assertTrue(form.is_valid())
 
+    def test_login_form_invalid(self):
+        """
+        Creation Nominal Login Form without
+        :return: True
+        """
+        User.objects.create_user(username='alex@gmail.com',
+                                 email='alex@gmail.com',
+                                 password='Password123!',
+                                 last_name='carlos',
+                                 first_name='roberto')
+        data = {
+            'username': 'alexandre@gmail.com',
+            'password': 'toto',
+        }
+        form = LoginForm(data)
+        self.assertEqual(
+            form.errors['username'],
+            ["Cette email n'est pas valide"]
+        )
+
     def test_association_form(self):
         """
         Creation Nominal Association Form
@@ -102,6 +126,30 @@ class AccountFormTestCase(TestCase):
         form = AssociationForm(data)
         self.assertTrue(form.is_valid())
 
+    def test_association_form_invalid(self):
+        """
+        Creation with email not equal Association Form
+        :return: Validation Error
+        """
+        data = {
+            'name': 'alex',
+            'street': 'toto',
+            'zip_code': '35000',
+            'city': 'Rennes',
+            'country': 'France',
+            'first_name': 'roberto',
+            'last_name': 'carlos',
+            'email': 'al@g.com',
+            're_email': 'ala@g.com',
+            'password': 'Password12/',
+            're_password': 'Password12/',
+        }
+        form = AssociationForm(data)
+        self.assertEqual(
+            form.errors['re_email'],
+            ["Les Emails ne correspondent pas"]
+        )
+
     def test_upload_association_form(self):
         """
         Creation Nominal Upload Association Form
@@ -112,6 +160,10 @@ class AccountFormTestCase(TestCase):
             'description': 'Cette association nous parle de la protection'
                            ' animale',
             'category': 'animaux',
+            'mission': 'mission',
+            'action': 'action',
+            'difficulty': 'difficulty',
+            'need': 'need'
         }
         form = UploadAssociation(data)
         self.assertFalse(form.is_valid())  # ImageField not working
@@ -256,7 +308,11 @@ class AccountViewsTestCase(TestCase):
         association = Association.objects.create(name='MonAsso',
                                                  picture='asso.jpg',
                                                  description='Vive mon Asso',
-                                                 category='animaux')
+                                                 category='animaux',
+                                                 mission='mission',
+                                                 action='action',
+                                                 difficulty="difficultés",
+                                                 need='besoins')
         user = User.objects.create_user(username='alex@gmail.com',
                                         email='alex@gmail.com',
                                         password='Password123!',
