@@ -69,7 +69,6 @@ def home_asso(request, association_id):
     return render(request, 'home_asso.html', context)
 
 
-@csrf_exempt
 def make_donation(request, association_id):
     """
     :param request: Button donation

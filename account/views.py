@@ -9,7 +9,6 @@ from .forms import LoginForm, ParagraphErrorList, MemberForm, AssociationForm, \
 from .models import CustomUser, Association, Address
 
 
-@csrf_exempt
 def login_view(request):
     """
     :param request: None
@@ -51,7 +50,6 @@ def logout_view(request):
     return render(request, 'home/homepage.html', locals())
 
 
-@csrf_exempt
 def member_registration(request):
     """
     :param request: None
@@ -94,7 +92,6 @@ def member_registration(request):
         return render(request, 'login/registration_member.html', locals())
 
 
-@csrf_exempt
 def association_registration(request):
     """
     :param request: Association Forms
@@ -174,7 +171,6 @@ def show_association(request):
     return render(request, 'association/my_association.html', context)
 
 
-@csrf_exempt
 def asso_upload_view(request):
     """
     :param request: user instance
@@ -205,4 +201,5 @@ def asso_upload_view(request):
             'form': form,
             'association': my_association,
         }
+        print("form not valid")
     return render(request, 'association/update_association.html', context)
